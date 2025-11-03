@@ -1,0 +1,121 @@
+\section{Para proceder al particionado}
+\begin{frame}
+
+\begin{center}
+\color{blue}Para proceder al particionado\vspace{10mm}\color{black}
+
+\only<1>{\begin{tcolorbox}[title=Si se trata de un disco duro mecánido o una unidad SSD]
+	\orden{cfdisk /dev/sda}
+\end{tcolorbox}}
+
+
+\only<2>{\begin{tcolorbox}[title=Pero si se trata de una unidad M.2]
+	\orden{cfdisk /dev/nvme0n1}
+\end{tcolorbox}}
+
+
+
+\end{center}
+\end{frame}
+
+\subsection{Consideraciones}
+\begin{frame}
+	\begin{center}
+		\begin{tcolorbox}[title=Hay que tener en cuenta si el disco está particionado como \textbf{MBR} o como \textbf{GPT}]	
+		
+			\begin{tabular}{ccc}
+				&  \textbf{MBR} & \textbf{GPT} \\
+				\textbf{Partición BIOS}	& No hace falta & Sí, en formato FAT32\\
+				\textbf{Partición UEFI}	& No hace falta & Sí, en formato FAT32\\
+			\end{tabular}	
+		\end{tcolorbox}
+		
+	\end{center}
+\end{frame}
+
+\subsection{Ejemplo de particionado MBR}
+\begin{frame}
+	\begin{center}
+	
+	
+	\begin{tcolorbox}[title=Ejemplo de particionado MBR]	
+		\begin{ttfamily}
+			\begin{tabular}{llll}
+			{\color{blue}/dev/sda1} &  {\color{red}/} 	  & {\color{brown}ext4} & \color{orange}mkfs.ext4 /dev/sda1\color{blue} \\
+			{\color{blue}/dev/sda2} &  {\color{red}swap}  & {\color{brown}swap} & \color{orange}mkswap /dev/sda2\color{blue} \\
+			{\color{blue}/dev/sda3} &  {\color{red}/home} & {\color{brown}ext4} & \color{orange}mkfs.ext4 /dev/sda3\color{blue} \\
+		\end{tabular}
+		\end{ttfamily}
+	\end{tcolorbox}
+	
+	Aquí no importa si el arranque es de tipo BIOS o UEFI.
+	\end{center}
+\end{frame}
+
+\subsection{Ejemplo de particionado GPT}
+\begin{frame}
+	\begin{center}
+		
+		\begin{tcolorbox}[title=Ejemplo de particionado GPT con BIOS]
+		\begin{ttfamily}
+			\begin{tabular}{llll}
+				{\color{blue}/dev/sda1} &  {\color{red}BIOS}  & {\color{brown}fat32} & {\color{orange}mkfs.fat -F32 /dev/sda1}\\
+				{\color{blue}/dev/sda2} &  {\color{red}/} 	  & {\color{brown}ext4}  & {\color{orange}mkfs.ext4 /dev/sda1} \\
+				{\color{blue}/dev/sda3} &  {\color{red}swap}  & {\color{brown}swap}  & {\color{orange}mkswap /dev/sda2} \\
+				{\color{blue}/dev/sda4} &  {\color{red}/home} & {\color{brown}ext4}  & {\color{orange}mkfs.ext4 /dev/sda3}
+			\end{tabular}
+		\end{ttfamily}
+		\end{tcolorbox}
+		
+	Es recomendable que la partición BIOS sea el primero de todos.
+	\end{center}
+	
+\end{frame}
+
+\subsection{Ejemplo de particionado GPT}
+\begin{frame}
+\begin{center}
+	
+	\begin{tcolorbox}[title=Ejemplo de particionado GPT con EFI]
+		\begin{ttfamily}
+			\begin{tabular}{llll}
+				{\color{blue}/dev/sda1} &  {\color{red}EFI}  & {\color{brown}fat32} & {\color{orange}mkfs.fat -F32 /dev/sda1}\\
+				{\color{blue}/dev/sda2} &  {\color{red}/} 	  & {\color{brown}ext4}  & {\color{orange}mkfs.ext4 /dev/sda1} \\
+				{\color{blue}/dev/sda3} &  {\color{red}swap}  & {\color{brown}swap}  & {\color{orange}mkswap /dev/sda2} \\
+				{\color{blue}/dev/sda4} &  {\color{red}/home} & {\color{brown}ext4}  & {\color{orange}mkfs.ext4 /dev/sda3}
+			\end{tabular}
+		\end{ttfamily}
+	\end{tcolorbox}
+	
+	Es recomendable que la partición EFI sea el primero de todos.
+\end{center}
+\end{frame}
+
+\subsection{Montaje de las particiones}
+\begin{frame}
+\begin{center}
+	
+	\begin{tcolorbox}[title=Sabiendo que {\ttfamily /dev/sda2} será la partición raíz:]
+		\begin{ttfamily}
+			\orden{mount /dev/sda2 /mnt}
+		\end{ttfamily}
+	\end{tcolorbox}\pause
+	
+	
+	\begin{tcolorbox}[title=Si es una instalación en un disco GPT con una partición BIOS o UEFI habrá que hacer,colframe=alert,colback=white]
+		\orden{mount --mkdir /dev/sda1 /mnt/boot}
+	\end{tcolorbox}
+	
+\end{center}
+\end{frame}
+
+\subsection{Montaje de las particiones}
+\begin{frame}
+	\begin{center}
+		\begin{tcolorbox}[title=Montamos la partición \textit{swap}]
+			\orden{swapon /dev/sda3}
+			\tcblower
+			La partición \textit{home} se montará más adelante.
+		\end{tcolorbox}\pause
+	\end{center}
+\end{frame}

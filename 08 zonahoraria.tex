@@ -1,0 +1,12 @@
+\section{Configuración de Arch Linux}
+\subsection{Zona horaria}
+\begin{frame}
+
+  \begin{tcolorbox}[title=Establecemos la zona horaria que es {\color{red}Atlántico/Canarias}]
+    \orden{ln -sf /usr/share/zoneinfo/{\color{red}Atlantic/Canary} /etc/localtime}
+\end{tcolorbox}\pause
+
+\begin{tcolorbox}[title=A continuación ejecutamos]
+    \orden{hwclock --systohc}
+\end{tcolorbox}
+\end{frame}

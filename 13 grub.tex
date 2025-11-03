@@ -1,0 +1,25 @@
+\section{Cargador de arranque}
+\subsection{GRUB}
+\begin{frame}
+
+    Configuramos GRUB, el cargador de arranque. Debemos tener en cuenta si la placa tiene BIOS o UEFI como vimos al principio.
+    
+    \only<1>{\begin{tcolorbox}[title=Si se trata de un arranque BIOS con disco mecánico o una unidad SSD]%
+        \orden{grub-install /dev/sda}%
+    \end{tcolorbox}}
+    \only<2>{\begin{tcolorbox}[title=Si se trata de un arranque BIOS con una unidad M.2]%
+        \orden{grub-install /dev/nvme0n1}%
+    \end{tcolorbox}\vspace{5mm}}
+    \only<3>{\begin{tcolorbox}[title=Si se trata de un arranque UEFI]
+      \orden{grub-install --target=x86\_64-efi --efi-directory=/boot --bootloader-id=grub}
+    \end{tcolorbox}\vspace{5mm}}
+
+    \only<4>{\begin{tcolorbox}[title=Guardamos la configuración:]
+      \orden{grub-mkconfig -o /boot/grub/grub.cfg}
+      \tcblower
+      \scriptsize
+      Y si no muestra un mensaje de error, podemos reiniciar comprobando que podemos arrancar Arch Linux.
+    \end{tcolorbox}}\pause\vspace{5mm}
+     
+    
+\end{frame}

@@ -1,0 +1,63 @@
+\section{Instalación del sistema base}
+\subsection{Actualización del catálogo de paquetes}
+\begin{frame}
+\begin{tcolorbox}[title=Primero actualizamos el catálogo de paquetes]
+    \orden{pacman -Sy}
+\end{tcolorbox}
+\end{frame}
+
+\subsection{Instalación}
+\begin{frame}
+	
+\only<1>{\begin{tcolorbox}[title=Instalación con BIOS: {\color{red}\ttfamily grub-bios}]
+		\begin{ttfamily}
+		\scriptsize
+		\begin{tabular}{l}
+			pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim \textbackslash  \\
+			\hspace{21mm} {\color{red}grub-bios} sddm plasma openssh git
+		\end{tabular}
+		\normalsize
+		\end{ttfamily}
+\end{tcolorbox}}
+		
+\pause
+	
+\only<2>{\begin{tcolorbox}[title=Instalación con UEFI: {\color{red}\ttfamily grub} y {\color{red}\ttfamily efibootmgr}]
+		\begin{ttfamily}
+		\scriptsize
+		\begin{tabular}{l}
+			pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim \textbackslash  \\
+			\hspace{21mm} {\color{red}grub efibootmgr} sddm plasma openssh git
+		\end{tabular}
+		\normalsize
+		\end{ttfamily}
+  \end{tcolorbox}}
+
+\end{frame}
+
+\subsection{Paquetes instalados}
+\begin{frame}
+  \begin{tcolorbox}[title=Explicación de los paquetes instalados]
+
+  \scriptsize
+  \begin{description}
+    \item[base:] Conjunto mínimo de paquetes para definir una instalación básica de Arch Linux.
+    \item[base-devel:] Conjunto de paquetes necesarios para crear software a partir del código fuente.
+    \item[linux:] El propio \textit{kernel}.
+    \item[linux-firmware:] Controladores para hardware común.
+    \item[sudo:]  Quieres ejecutar comandos como root, ¿verdad?
+    \item[ntfs-3g:]  Controlador del sistema de archivos NTFS y utilidades necesarias para trabajar con unidades NTFS.
+    \item[networkmanager:] Facilita detección y configuración para que los sistemas se conecten automáticamente a las redes.
+    \item[curl:] Herramienta de línea de comandos y una biblioteca para transferir datos mediante URL.
+    \item[aria2:] aria2 es una ligera utilidad de descarga multiprotocolo y multifuente.
+    \item[zsh:] \textit{Shell} potente que funciona como shell interactivo y como intérprete de lenguajes de scripting.
+    \item[neovim:] Editor de texto plano de gran potencia.
+    \item[grub:] Gestor multiarranque.
+    \item[openssh:] Protocolo de red para iniciar una sesión en una máquina remota.
+    \item[git:] Programa para control de versiones.
+  \end{description}
+\end{tcolorbox}
+	
+\end{frame}
+
+

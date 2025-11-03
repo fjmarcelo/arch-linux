@@ -1,0 +1,30 @@
+\section{Configuración de Arch Linux}
+\subsection{Red}
+\begin{frame}
+    \begin{tcolorbox}[title=Le damos nombre a nuestro ordenador]
+      \orden{echo Lusitania > /etc/hostname}
+    \end{tcolorbox}
+\end{frame}
+
+\subsection{Red}
+\begin{frame}
+
+    \begin{tcolorbox}[title=Añadimos las siguientes líneas en {\ttfamily /etc/hosts}]
+    \begin{ttfamily}
+    \begin{tabular}{ll}
+    	127.0.0.1    &  localhost \\
+	    ::1          &  localhost \\
+	    127.0.1.1    &  Lusitania
+    \end{tabular}
+    \end{ttfamily}
+  \end{tcolorbox}
+    
+\end{frame}
+
+\begin{frame}
+\begin{tcolorbox}[title=Habilitamos {\ttfamily NetworkManager} para su arranque automático]
+	\orden{systemctl enable NetworkManager}
+\end{tcolorbox}
+\end{frame}
+
+

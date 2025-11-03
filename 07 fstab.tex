@@ -1,0 +1,44 @@
+\section{Configuración de Arch Linux}
+
+\subsection{Montaje de \textit{home}}
+
+\begin{frame}
+	
+{\color{blue}Antes de generar el fichero {\ttfamily fstab}, debemos montar la partición de \textit{home}}\vspace{5mm}
+
+
+\only<1>{\begin{tcolorbox}[title=Si es una instalación BIOS:]
+\orden{mount /dev/sda3 /mnt/home}
+\end{tcolorbox}}
+
+
+\only<2>{\begin{tcolorbox}[title=Si es una instalación UEFI:]
+\orden{mount /dev/sda4 /mnt/home}
+\end{tcolorbox}}
+
+
+\end{frame}
+
+\subsection{Generación de {\ttfamily fstab}}
+
+\begin{frame}
+
+\begin{tcolorbox}[title=Generación de {\ttfamily fstab}]
+    \orden{genfstab -U /mnt >> /mnt/etc/fstab}
+\end{tcolorbox}\pause
+    
+\begin{tcolorbox}[title=Comprobamos que se ha generado correctamente]
+    \orden{cat /mnt/etc/fstab}
+\end{tcolorbox}
+    
+\end{frame}
+
+\subsection{Entrada a la raíz}
+
+\begin{frame}
+
+  \begin{tcolorbox}[title=Y entramos en la partición {\ttfamily /mnt}]
+    \orden{arch-chroot /mnt}
+  \end{tcolorbox}
+    
+\end{frame}
