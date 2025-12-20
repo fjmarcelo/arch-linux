@@ -4,19 +4,21 @@ Usaremos la utilidad \tmarron{cfdisk}
 \begin{center}
 
 \begin{tcolorbox}[title=Si se trata de un disco duro mecánido o una unidad SSD]
-	\orden{cfdisk /dev/sda}
+\begin{lstlisting}[style=bashstyle]
+cfdisk /dev/sda
+\end{lstlisting}
 \end{tcolorbox}
 
 
 \begin{tcolorbox}[title=Pero si se trata de una unidad M.2]
-	\orden{cfdisk /dev/nvme0n1}
+\begin{lstlisting}[style=bashstyle]
+cfdisk /dev/nvme0n1
+\end{lstlisting}
 \end{tcolorbox}
 \end{center}
 
 \subsection{Ejemplo de particionado MBR}
 	\begin{center}
-	
-	
 	\begin{tcolorbox}[title=Ejemplo de particionado MBR]	
 		\begin{ttfamily}
 			\begin{tabular}{llll}
