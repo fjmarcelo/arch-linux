@@ -3,10 +3,14 @@
 \begin{frame}
 
   \begin{tcolorbox}[title=Establecemos la zona horaria que es {\color{red}Atlántico/Canarias}]
-    \orden{ln -sf /usr/share/zoneinfo/{\color{red}Atlantic/Canary} /etc/localtime}
-\end{tcolorbox}\pause
+    \begin{lstlisting}[style=bashstyle]
+ln -sf /usr/share/zoneinfo/{\color{red}Atlantic/Canary} /etc/localtime
+    \end{lstlisting}
+\end{tcolorbox}
 
 \begin{tcolorbox}[title=A continuación ejecutamos]
-    \orden{hwclock --systohc}
+    \begin{lstlisting}[style=bashstyle]
+hwclock --systohc
+    \end{lstlisting}
 \end{tcolorbox}
 \end{frame}
