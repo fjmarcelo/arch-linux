@@ -1,32 +1,24 @@
 \section{Instalación del sistema base}
 \subsection{Actualización del catálogo de paquetes}
 \begin{tcolorbox}[title=Primero actualizamos el catálogo de paquetes]
-    \orden{pacman -Sy}
+    \begin{lstlisting}[style=bashstyle]
+    pacman -Sy
+    \end{lstlisting}
 \end{tcolorbox}
 
 \subsection{Instalación}
 	
 \begin{tcolorbox}[title=Instalación con BIOS: {\color{red}\ttfamily grub-bios}]
-		\begin{ttfamily}
-		\scriptsize
-		\begin{tabular}{l}
-			pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim \textbackslash  \\
-			\hspace{21mm} {\color{red}grub-bios} sddm plasma openssh git
-		\end{tabular}
-		\normalsize
-		\end{ttfamily}
+\begin{lstlisting}[style=bashstyle]
+pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim grub-bios sddm plasma openssh git
+\end{lstlisting}
 \end{tcolorbox}
 		
 \begin{tcolorbox}[title=Instalación con UEFI: {\color{red}\ttfamily grub} y {\color{red}\ttfamily efibootmgr}]
-		\begin{ttfamily}
-		\scriptsize
-		\begin{tabular}{l}
-			pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim \textbackslash  \\
-			\hspace{21mm} {\color{red}grub efibootmgr} sddm plasma openssh git
-		\end{tabular}
-		\normalsize
-		\end{ttfamily}
-  \end{tcolorbox}
+\begin{lstlisting}[style=bashstyle]
+pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim grub efibootmgr sddm plasma openssh git
+\end{lstlisting}
+\end{tcolorbox}
 
 
 \subsection{Paquetes instalados}
