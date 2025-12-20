@@ -1,15 +1,12 @@
 \section{Instalación del sistema base}
 \subsection{Actualización del catálogo de paquetes}
-\begin{frame}
 \begin{tcolorbox}[title=Primero actualizamos el catálogo de paquetes]
     \orden{pacman -Sy}
 \end{tcolorbox}
-\end{frame}
 
 \subsection{Instalación}
-\begin{frame}
 	
-\only<1>{\begin{tcolorbox}[title=Instalación con BIOS: {\color{red}\ttfamily grub-bios}]
+\begin{tcolorbox}[title=Instalación con BIOS: {\color{red}\ttfamily grub-bios}]
 		\begin{ttfamily}
 		\scriptsize
 		\begin{tabular}{l}
@@ -18,11 +15,9 @@
 		\end{tabular}
 		\normalsize
 		\end{ttfamily}
-\end{tcolorbox}}
+\end{tcolorbox}
 		
-\pause
-	
-\only<2>{\begin{tcolorbox}[title=Instalación con UEFI: {\color{red}\ttfamily grub} y {\color{red}\ttfamily efibootmgr}]
+\begin{tcolorbox}[title=Instalación con UEFI: {\color{red}\ttfamily grub} y {\color{red}\ttfamily efibootmgr}]
 		\begin{ttfamily}
 		\scriptsize
 		\begin{tabular}{l}
@@ -31,16 +26,14 @@
 		\end{tabular}
 		\normalsize
 		\end{ttfamily}
-  \end{tcolorbox}}
+  \end{tcolorbox}
 
-\end{frame}
 
 \subsection{Paquetes instalados}
-\begin{frame}
-  \begin{tcolorbox}[title=Explicación de los paquetes instalados]
+\begin{tcolorbox}[title=\faExclamation\hspace*{1em} Explicación de los paquetes instalados]
 
-  \scriptsize
-  \begin{description}
+  \small
+  \begin{paquetes}
     \item[base:] Conjunto mínimo de paquetes para definir una instalación básica de Arch Linux.
     \item[base-devel:] Conjunto de paquetes necesarios para crear software a partir del código fuente.
     \item[linux:] El propio \textit{kernel}.
@@ -55,9 +48,8 @@
     \item[grub:] Gestor multiarranque.
     \item[openssh:] Protocolo de red para iniciar una sesión en una máquina remota.
     \item[git:] Programa para control de versiones.
-  \end{description}
+  \end{paquetes}
 \end{tcolorbox}
 	
-\end{frame}
 
 

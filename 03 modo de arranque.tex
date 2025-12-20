@@ -1,22 +1,26 @@
+\newpage
 \section{Comprobamos qué tipo de arranque tiene la placa}
-\begin{frame}
 
 \begin{center}
 \color{blue}\color{black}\vspace{5mm}
-    
-    
-    \begin{tcolorbox}[title=Comprobamos qué tipo de arranque tiene la placa]
-	     \orden{ls /sys/firmware/efi/efivars}
-    \end{tcolorbox}\pause
-    
-    \only<1>{\includegraphics[width=80mm]{3 UEFI.png}\\}
-    \only<1>{Si vemos esta salida, entonces es un arranque \textbf{\color{red}UEFI}.}
-    
-    \only<1>{Eso significa que deberemos instalar los paquetes {\ttfamily \color{blue}grub} y {\ttfamily \color{blue}efibootmgr}.}
-    
-    \only<2>{Si no vemos nada tras la ejecución, entonces es un arranque \textbf{\color{red}BIOS}.}
-    
-    \only<2>{En este caso deberemos instalar el paquete {\ttfamily \color{blue}grub-bios}.}
-    
-    \end{center}
-\end{frame}
+ 
+ 
+ \begin{tcolorbox}[title=Comprobamos qué tipo de arranque tiene la placa]
+    \orden{ls /sys/firmware/efi/efivars}
+ \end{tcolorbox}
+ 
+ \includegraphics[width=.95\textwidth]{3 UEFI.png}\\
+\end{center}
+
+ \vspace{15mm}
+
+ \begin{tcolorbox}[title=Si  vemos  esta  salida\,  entonces  es  un  arranque  \btrojo{UEFI}]
+Eso  significa  que  deberemos  instalar  los paquetes  \tazul{grub}  y  \tazul{efibootmgr}.
+ \end{tcolorbox}
+
+ \vspace{15mm}
+
+ \begin{tcolorbox}[title=Si  no la vemos entonces  es  un arranque  \brojo{BIOS}]
+En  este  caso  deberemos instalar  el  paquete   \tazul{grub-bios}.
+ \end{tcolorbox}
+ \newpage

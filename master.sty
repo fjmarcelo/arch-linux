@@ -1,0 +1,280 @@
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{microtype}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+\usepackage{twemojis}
+\usepackage{dingbat}
+\usepackage{nonfloat}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[table]{xcolor}
+\usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
+\usepackage[margin=2cm]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifsym}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{bold-extra}
+\usepackage[table]{xcolor}
+\usepackage{fontspec}
+\usepackage{fontawesome5}
+\usepackage{bbding}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{fancyvrb}
+\usepackage{tocloft}
+\usepackage{fancybox}
+\usepackage{pdflscape}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor=black]{hyperref}
+\cornersize{.4}
+
+\setmainfont{Calibri} % sets the roman font
+\setsansfont{Calibri} % sets the sans font
+\setmonofont[Scale=.8]{OCR-A} % sets the monospace font
+\setmonofont[Scale=.8]{FiraCode-Regular} % sets the monospace font
+\setlength{\parskip}{-4mm}
+
+\newcommand{\vig}{\textbullet\hspace{1ex}\ }
+\newcommand{\SigCol}{\color{grisOscuro}\begin{flushright}\raisebox{0.3 em}{Continúa en la  siguiente columna} \ArrowBoldDownRight\end{flushright}}
+
+
+% Formateando la lista de figuras
+\renewcommand{\cftfignumwidth}{10mm}
+%\renewcommand{\cftfigpresnum}{Figura }
+
+% Formateado de listas de descripción
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+
+\newcommand{\caja}[1][.3]{\begin{minipage}{#1\textwidth}\hspace{5mm}\end{minipage}}
+\newcommand{\linea}{\color{marron}\rule{.96\textwidth}{0.6pt}\color{black}}
+\newcommand{\momento}[1]{\ovalbox{\textbf{\texttt{t#1}}}\hspace{2mm}}
+
+% Formateando el índice de contenidos
+\usepackage{tocloft}
+\renewcommand{\contentsname}{Contenido}
+%\setlength\cftparskip{-2pt}
+%\setlength\cftaftertoctitleskip{2pt}
+%\renewcommand\cftsecnumwidth{60mm}
+
+% Título del índice de contenidos
+\renewcommand\cfttoctitlefont{\hfill\Large\bfseries}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+
+% parte -- No funciona :(
+% \renewcommand{\cftpartpresnum}{\color{red}Curso }
+% \renewcommand{\cftpartaftersnum}{. }
+
+% capítulo
+%\renewcommand{\cftchappresnum}{\color{blue}Tema }
+%\renewcommand{\cftchapaftersnum}{. }
+%\setlength\cftchapnumwidth{20mm}
+
+% sección
+%\setlength\cftbeforesecskip{1pt}
+%\cftsetindents{section}{17mm}{2.5em}
+
+
+% Colores
+\definecolor{naranja}{rgb}{1,.5,0}
+\definecolor{gris}{rgb}{0.62,0.62,0.62}
+\definecolor{grisClaro}{rgb}{0.62,0.62,0.62}
+\definecolor{grisOscuro}{rgb}{0.5,0.5,0.5}
+\definecolor{marron}{rgb}{0.57,0.28,0.0}
+\definecolor{verde}{rgb}{0.0,0.45,0.0}
+\definecolor{celeste}{rgb}{0.86,0.91,0.96}
+\definecolor{azul}{rgb}{0.35,0.60,0.83}
+
+\newcommand{\tgrisc}[1]{{\color{grisClaro}{\texttt{#1}}}}
+\newcommand{\igrisc}[1]{{\color{grisClaro}{\textit{#1}}}}
+\newcommand{\bgrisc}[1]{{\color{grisClaro}{\textbf{#1}}}}
+\newcommand{\btgrisc}[1]{{\color{grisClaro}\textbf{\texttt{#1}}}}
+\newcommand{\itgrisc}[1]{{\color{grisClaro}\textit{\texttt{#1}}}}
+
+\newcommand{\tgriso}[1]{{\color{grisOscuro}{\texttt{#1}}}}
+\newcommand{\igriso}[1]{{\color{grisOscuro}{\textit{#1}}}}
+\newcommand{\bgriso}[1]{{\color{grisOscuro}{\textbf{#1}}}}
+\newcommand{\btgriso}[1]{{\color{grisOscuro}\textbf{\texttt{#1}}}}
+\newcommand{\itgriso}[1]{{\color{grisOscuro}\textit{\texttt{#1}}}}
+
+\newcommand{\tazul}[1]{{\color{blue}{\texttt{#1}}}}
+\newcommand{\iazul}[1]{{\color{blue}{\textit{#1}}}}
+\newcommand{\bazul}[1]{{\color{blue}{\textbf{#1}}}}
+\newcommand{\btazul}[1]{{\color{blue}\textbf{\texttt{#1}}}}
+\newcommand{\itazul}[1]{{\color{blue}\textit{\texttt{#1}}}}
+
+\newcommand{\tmarron}[1]{{\color{marron}{\texttt{#1}}}}
+\newcommand{\imarron}[1]{{\color{marron}{\textit{#1}}}}
+\newcommand{\bmarron}[1]{{\color{marron}{\textbf{#1}}}}
+\newcommand{\btmarron}[1]{{\color{marron}\textbf{\texttt{#1}}}}
+\newcommand{\itmarron}[1]{{\color{marron}\textit{\texttt{#1}}}}
+
+\newcommand{\trojo}[1]{{\color{red}{\texttt{#1}}}}
+\newcommand{\irojo}[1]{{\color{red}{\textit{#1}}}}
+\newcommand{\brojo}[1]{{\color{red}{\textbf{#1}}}}
+\newcommand{\btrojo}[1]{{\color{red}\textbf{\texttt{#1}}}}
+\newcommand{\itrojo}[1]{{\color{red}\textit{\texttt{#1}}}}
+
+\newcommand{\igual}{\btazul{=}} 
+\newcommand{\distinto}{\btazul{<\hspace{0.5mm}>}}
+\newcommand{\menq}{\btazul{<}} 
+\newcommand{\mayq}{\btazul{>}} 
+\newcommand{\meng}{\btazul{<=}} 
+\newcommand{\mayg}{\btazul{>=}} 
+
+\newcommand{\boton}[1]{\ovalbox{\texttt{#1}}}
+\newcommand{\btt}[1]{\color{blue}\texttt{#1}\color{black}}
+\newcommand{\rtt}[1]{\color{red}\texttt{#1}\color{black}}
+\newcommand{\textbi}[1]{\textbf{\textit{#1}}}
+\newcommand{\textbt}[1]{\textbf{\texttt{#1}}}
+\newcommand{\textti}[1]{\textit{\texttt{#1}}}
+
+\newcommand{\figura}[2]{%
+\begin{center}%
+\begin{minipage}{.4\textwidth}%
+    \centering%
+    \includegraphics[width=\textwidth]{#1}%
+    \figcaption{#2}%
+\end{minipage}%
+\end{center}%
+}
+
+\pagestyle{fancy}
+
+\setlength{\parskip}{5mm}
+\renewcommand{\baselinestretch}{1}
+
+\newcommand{\filo}{\color{grisOscuro}\rule{.25\textwidth}{1pt}}
+\newcommand{\prac}{\renewcommand\labelenumi{\textbf{Práctica\ \theenumi.}}}
+\newcommand{\paso}{\renewcommand\labelenumi{\textbf{Paso\ \theenumi.}}}
+\newcommand{\ejemplo}{\renewcommand\labelenumi{\textbf{Ejemplo\ \theenumi.}}}
+\newcommand{\pasito}{\renewcommand\labelenumii{\textbf{Paso\ \theenumii}}}
+
+% Módulo
+\titleformat{\part}[block]
+  {\centering}{%
+  \vspace{10cm}\\%
+  \color{grisOscuro}{\normalfont\Huge\bfseries\textsc{Curso \thepart}}}%
+  {1cm}{\\\vspace{-1mm}}
+\titlespacing*{\part}{0pt}{-19pt}{0pt}
+
+% Tema
+%\titleformat{\chapter}[block]
+%  {\flushright}{%
+%  \vspace{0.1mm}\\%
+%  \color{grisClaro}{\normalfont\Huge\bfseries\textit{Tema \thechapter}}}%
+%  {1cm}{\\}
+%\titlespacing*{\chapter}{10pt}{19pt}{0pt}
+
+% sección
+\titleformat{\section}[block]
+{\color{azul}\normalfont\Large\bfseries}
+{\color{azul}\thesection.}{1em}{}
+
+% subsección
+\titleformat{\subsection}
+{\color{azul}\normalfont\large\bfseries}
+{\color{azul}\thesubsection.}{1em}{}
+
+% subsubsección
+\titleformat{\subsubsection}
+{\color{azul}\normalfont}
+{\color{azul}\thesubsubsection.}{1em}{}
+
+
+ \newcounter{inicio}
+ \setcounter{inicio}{2024}
+
+ \newcounter{fin}
+ \setcounter{fin}{
+   \numexpr\value{inicio}+1\relax%
+ }
+ \newcommand{\periodo}{\the\value{inicio}/\the\value{fin}}
+
+% Cabecera y pie
+\lhead{}
+\chead{}
+\rhead{}
+
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% https://ondahostil.wordpress.com/2017/02/21/curso-no-convencional-de-latex-a-vueltas-con-el-idioma/
+\renewcommand{\partname}{Curso}
+%\renewcommand{\chaptername}{Tema}
+\renewcommand{\tablename}{Tabla}
+\newcommand{\tema}{\chapter{}\rhead{\footnotesize Tema \thechapter}\thispagestyle{empty}}
+\newcommand{\capitulo}[1]{%
+    \chapter{\large\em\textit{\color{blue}#1}}%
+    \rhead{\footnotesize \textbf{Curso \thepart: \curso}\\\thechapter. #1}%
+}
+
+\newcommand{\importante}[1]{%
+\noindent\fbox{\begin{minipage}{.9\textwidth}%
+{\textbf{Importante: }}#1%
+\end{minipage}}}
+
+\newcommand{\nota}[1]{%
+\noindent\fbox{\begin{minipage}{.9\textwidth}%
+{\color{red}\textbf{Nota: }}#1%
+\end{minipage}}}
+
+\newcommand{\warning}[1]{%
+\noindent\fbox{\begin{minipage}{.9\textwidth}%
+{\color{red}\textbf{Precaución: }}#1%
+\end{minipage}}}
+
+\title{\textbf{\master}}
+\author{\includegraphics[width=.5\textwidth,bb=0 0 1195 829]{Oracle12c-Intecssa.png}}
+\date{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+\usepackage{enumitem}  % See https://www.ctan.org/pkg/enumitem
+\renewcommand{\lstlistingname}{Código}
+\newlist{paquetes}{description}{1}
+\setlist[paquetes]{style=nextline,
+                    font=\color{marron}\bfseries,
+                    % Tweak the next 4 options as needed:
+                    labelindent=1cm, 
+                    leftmargin =2cm,
+                    rightmargin=1cm,
+                    topsep     =3ex
+                   }
+	
+\lstdefinestyle{bashstyle}{
+  language=bash,
+  captionpos=b,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{azul}\bfseries,
+  commentstyle=\color{grisOscuro}\itshape,
+  stringstyle=\color{verde},
+  % Añadir comandos específicos como palabras clave
+  morekeywords={cat, pacstrap, mount, swapon, sudo, umount, swapoff, df, lsblk},
+  % O usar emph para resaltarlos de forma diferente
+  emphstyle=\color{red}\bfseries,
+  emph={arch-chroot, genfstab, apt, systemctl, pacstrap},
+  showstringspaces=false,
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  xleftmargin=5mm,  %
+  tabsize=4
+  % frame=single,
+  % backgroundcolor=\color{white},
+}
