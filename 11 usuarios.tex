@@ -1,46 +1,37 @@
 \section{Usuarios}
 
 \subsection{Establecemos la contraseña de \textit{root}}
-\begin{frame}
 \begin{tcolorbox}[title=Establecemos la contraseña del usuario \textit{root}]
-    \orden{passwd}
+\begin{lstlisting}[style=bashstyle]
+passwd
+\end{lstlisting}
 \end{tcolorbox}
-\end{frame}
-
 
 \subsection{Nuevo usuario \textit{non-root}}
-\begin{frame}
     Seguiremos los siguientes pasos para la creación de nuestro usuario {\color{red}\textbf{viriato}} con su contraseña {\color{red}\textbf{iberia}}.
-      \begin{tcolorbox}[title=Creamos el grupo de \textbf{viriato}.]
-       	\orden{groupadd {\color{red}viriato}}
-      \end{tcolorbox}\pause
-   	
-    \begin{tcolorbox}[title=Creamos el usuario.]
-   	\orden{useradd {\color{blue}viriato} {\color{brown}-m} {\color{red}-g viriato}}
-    \tcblower
-    \scriptsize
-   	Con el parámetro {\color{brown}\textbf{-m}} indicamos que debe crear el directorio {\ttfamily\color{red}/home/viriato} y {\color{green}\textbf{-g}} para indicar el grupo principal del usuario.
-    \end{tcolorbox}\pause
-   	
-    \begin{tcolorbox}[title=Le ponemos al usuario una contraseña.]
-     \orden{passwd {\color{blue}viriato}}
-    \end{tcolorbox}
-\end{frame}
+    \begin{tcolorbox}[title=Creamos el usuario y le asignamos la contraseña.]
+\begin{lstlisting}[style=bashstyle]
+useradd -m viriato
+passwd viriato
+\end{lstlisting}
+\tcblower
+Con el parámetro {\color{brown}\textbf{-m}} indicamos que debe crear el directorio {\ttfamily\color{red}/home/viriato}. 
+\end{tcolorbox}
 
- \subsection{Privilegios \textit{sudo} para \color{blue}viriato}
-\begin{frame}
+\subsection{Privilegios \textit{sudo} para \color{blue}viriato}
 		Queremos darle a {\color{brown}viriato} privilegios de tipo \textit{sudo}.
 
-    \begin{tcolorbox}[title=Para ellos debemos editar el fichero {\ttfamily\color{red}/etc/sudoers}]
-		\orden{nano /etc/sudoers}
-    \end{tcolorbox}
-		
-		
-   \begin{tcolorbox}[title=Y añadimos la siguiente línea]
-   	 \orden{viriato ALL=(ALL:ALL) NOPASSWD:ALL}
-     \tcblower
-     \scriptsize
- 	   Guardamos y cerramos el fichero.
-   \end{tcolorbox}
-		
-\end{frame}
+\begin{tcolorbox}[title=Para ellos debemos editar el fichero {\ttfamily\color{red}/etc/sudoers}]
+\begin{lstlisting}[style=bashstyle]
+nano /etc/sudoers
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Y añadimos la siguiente línea]
+\begin{lstlisting}[style=bashstyle]
+viriato ALL=(ALL:ALL) NOPASSWD:ALL
+\end{lstlisting}
+  \tcblower
+  \scriptsize
+  Guardamos y cerramos el fichero.
+\end{tcolorbox}
