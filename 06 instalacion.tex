@@ -7,17 +7,13 @@
 \end{tcolorbox}
 
 \subsection{Instalación}
-	
-\begin{tcolorbox}[title=Instalación con BIOS: {\color{red}\ttfamily grub}]
+
+\begin{tcolorbox}[title=Instalación del sistema base]
 \begin{lstlisting}[style=bashstyle]
 pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim grub sddm plasma openssh git
 \end{lstlisting}
-\end{tcolorbox}
-		
-\begin{tcolorbox}[title=Instalación con UEFI: {\color{red}\ttfamily grub} y {\color{red}\ttfamily efibootmgr}]
-\begin{lstlisting}[style=bashstyle]
-pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim grub efibootmgr sddm plasma openssh git
-\end{lstlisting}
+\tcblower
+\small Si el arranque es \textbf{UEFI}, instala también \tazul{efibootmgr}:\quad\orden{pacman -S efibootmgr}
 \end{tcolorbox}
 
 

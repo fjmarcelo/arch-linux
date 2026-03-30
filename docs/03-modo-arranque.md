@@ -8,8 +8,8 @@ ls /sys/firmware/efi/efivars
 
 !!! success "Arranque UEFI"
     Si el comando devuelve una lista de ficheros, el sistema arranca en modo **UEFI**.
-    Deberemos instalar los paquetes `grub` y `efibootmgr`.
+    Instalaremos el paquete `grub` y, adicionalmente, `efibootmgr`.
 
 !!! info "Arranque BIOS"
     Si el comando da un error o no devuelve nada, el sistema usa arranque **BIOS** (legacy).
-    En este caso también instalaremos el paquete `grub`; la diferencia estará en el comando de instalación.
+    Instalaremos únicamente el paquete `grub`.

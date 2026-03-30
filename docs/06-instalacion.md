@@ -8,20 +8,17 @@ pacman -Sy
 
 ## Instalación con `pacstrap`
 
-=== "BIOS"
+```bash
+pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g \
+    networkmanager curl aria2 zsh neovim grub \
+    sddm plasma openssh git
+```
+
+!!! info "Arranque UEFI"
+    Si el sistema arranca en modo UEFI, instala también `efibootmgr`:
 
     ```bash
-    pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g \
-        networkmanager curl aria2 zsh neovim grub \
-        sddm plasma openssh git
-    ```
-
-=== "UEFI"
-
-    ```bash
-    pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g \
-        networkmanager curl aria2 zsh neovim grub efibootmgr \
-        sddm plasma openssh git
+    pacman -S efibootmgr
     ```
 
 ---
