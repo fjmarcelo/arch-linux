@@ -3,7 +3,7 @@
 \begin{center}
     
   \begin{tcolorbox}[title=Comprobamos la conexión a Internet]
-	\orden{\ttfamily ping -c 4 google.es}
+	\orden{ping -c 4 google.es}
   \scriptsize
   \begin{verbatim}
   PING google.es (172.217.17.3) 56(84) bytes de datos.
@@ -22,10 +22,10 @@
 		En caso de que sea un portátil o un ordenador con conexión inalámbrica, se deberá usar la aplicación {\color{blue}\ttfamily iwctl}.\\
 
   \textbf{Pasos a seguir}\\
-  Para conectarse a la red WiFi, debemos saber el nombre de nuestro dispositivo primero, para esto un ip link y ya estamos del otro lado. Para los comandos a continuación usaremos \tazul{wlan0} como nombre de dispositivo y supongamos además que nuestra SSID es \tmarron{redCasa} con clave \trojo{1234567890}.
+  Para conectarse a la red WiFi, debemos saber el nombre de nuestro dispositivo primero; para ello ejecutamos \texttt{ip link} y buscamos la interfaz inalámbrica. Para los comandos a continuación usaremos \tazul{wlan0} como nombre de dispositivo y supongamos además que nuestra SSID es \tmarron{redCasa} con clave \trojo{1234567890}.
 
 \begin{center}
-  \verb+iwctl --passphrase 1234567890 station wlan1 connect redCasa+
+  \verb+iwctl --passphrase 1234567890 station wlan0 connect redCasa+
 \end{center}
 
 Si todo va bien debería funcionar la orden \tmarron{ping}

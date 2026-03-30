@@ -6,13 +6,13 @@ Configuramos GRUB, el cargador de arranque. Debemos tener en cuenta si la placa 
 \subsection{Arranque BIOS}
 \begin{tcolorbox}[title=Si se trata de un arranque con disco mecánico o una unidad SSD]
 \begin{lstlisting}[style=bashstyle]
-grub-install /dev/sda
+grub-install --target=i386-pc /dev/sda
 \end{lstlisting}
 \end{tcolorbox}
 
 \begin{tcolorbox}[title=Si se trata de un arranque con una unidad M.2]
 \begin{lstlisting}[style=bashstyle]
-grub-install /dev/nvme0n1
+grub-install --target=i386-pc /dev/nvme0n1
 \end{lstlisting}
 \end{tcolorbox}\vspace{5mm}
 

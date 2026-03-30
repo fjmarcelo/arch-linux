@@ -1,0 +1,67 @@
+site_name: Instalación de Arch Linux
+site_author: Félix J. Marcelo Wirnitzer
+site_description: Guía paso a paso para instalar Arch Linux desde cero.
+
+theme:
+  name: material
+  language: es
+  logo: img/arch_linux.png
+  favicon: img/arch_linux.png
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - def_list
+  - md_in_html
+
+nav:
+  - Inicio: index.md
+  - Preparación:
+    - 1. Descargar la ISO: 01-iso.md
+    - 2. Configurar el teclado: 02-teclado.md
+    - 3. Modo de arranque: 03-modo-arranque.md
+    - 4. Conexión a Internet: 04-internet.md
+  - Instalación:
+    - 5. Particionado: 05-particionado.md
+    - 6. Sistema base: 06-instalacion.md
+    - 7. Generar fstab: 07-fstab.md
+  - Configuración del sistema:
+    - 8. Zona horaria: 08-zonahoraria.md
+    - 9. Localización: 09-localizacion.md
+    - 10. Red y hostname: 10-red.md
+    - 11. Usuarios: 11-usuarios.md
+    - 12. Microcode: 12-microcode.md
+    - 13. GRUB: 13-grub.md
+  - Post-instalación:
+    - 14. Repositorio AUR: 14-aur.md
+    - 15. Instalación de yay: 15-yay.md
+    - 16. Entornos gráficos: 16-entornos-graficos.md

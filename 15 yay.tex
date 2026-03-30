@@ -1,20 +1,19 @@
 \section{Instalación de {\color{brown}\texttt{yay}}}
 \subsection{Proceso de instalación}
-\begin{frame}
+
 	\begin{center}
 		{\color{blue}Pasos a seguir:}\vspace{3mm}
-		
-      \begin{tcolorbox}[title=Descargamos los ficheros desde \textbf{Github}:]
 
+      \begin{tcolorbox}[title=Descargamos los ficheros desde el repositorio \textbf{AUR}:]
 			\orden{git clone https://aur.archlinux.org/yay.git}
-      \end{tcolorbox}\pause
-			
+      \end{tcolorbox}
+
       \begin{tcolorbox}[title=Ahora vamos al directorio y compilamos:]
 			\orden{cd yay}\vspace{1mm}
-      
+
 			\orden{makepkg -si}
-      \end{tcolorbox}\pause
-			
-		\visible<4->{Para instalar software solo hay que escribir {\color{red}\texttt{yay}} en lugar de {\color{red}\texttt{pacman}} sin necesidad de usar la orden {\color{red}\texttt{sudo}}}.\\\visible<5>{Desde este momento podemos instalar todos los paquetes con {\color{red}\texttt{yay}}.}
+      \end{tcolorbox}
+
+		Para instalar software solo hay que escribir {\color{red}\texttt{yay}} en lugar de {\color{red}\texttt{pacman}} sin necesidad de usar la orden {\color{red}\texttt{sudo}}.\\[3mm]
+		Desde este momento podemos instalar todos los paquetes con {\color{red}\texttt{yay}}.
 		\end{center}
-\end{frame}

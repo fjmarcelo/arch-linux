@@ -21,9 +21,11 @@ Con el parámetro {\color{brown}\textbf{-m}} indicamos que debe crear el directo
 \subsection{Privilegios \textit{sudo} para \color{blue}viriato}
 		Queremos darle a {\color{brown}viriato} privilegios de tipo \textit{sudo}.
 
-\begin{tcolorbox}[title=Para ellos debemos editar el fichero {\ttfamily\color{red}/etc/sudoers}]
+\begin{tcolorbox}[colframe=red!75!black, title=\twemoji{warning} Edición segura de sudoers con \texttt{visudo}]
+  \small
+  Nunca edites \texttt{/etc/sudoers} directamente con un editor de texto. Un error de sintaxis dejaría el sistema sin acceso a \texttt{sudo}. Usa siempre \texttt{visudo}, que valida la sintaxis antes de guardar:
 \begin{lstlisting}[style=bashstyle]
-nano /etc/sudoers
+EDITOR=nano visudo
 \end{lstlisting}
 \end{tcolorbox}
 
@@ -33,6 +35,6 @@ viriato ALL=(ALL:ALL) NOPASSWD:ALL
 \end{lstlisting}
   \tcblower
   \scriptsize
-  Guardamos y cerramos el fichero.
+  Guardamos y cerramos el fichero. \textbf{Nota:} \texttt{NOPASSWD:ALL} elimina la petición de contraseña para \texttt{sudo}; es útil en clase, pero no se recomienda en sistemas en producción.
 \end{tcolorbox}
 \newpage

@@ -8,9 +8,9 @@
 
 \subsection{Instalación}
 	
-\begin{tcolorbox}[title=Instalación con BIOS: {\color{red}\ttfamily grub-bios}]
+\begin{tcolorbox}[title=Instalación con BIOS: {\color{red}\ttfamily grub}]
 \begin{lstlisting}[style=bashstyle]
-pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim grub-bios sddm plasma openssh git
+pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanager curl aria2 zsh neovim grub sddm plasma openssh git
 \end{lstlisting}
 \end{tcolorbox}
 		
@@ -37,7 +37,10 @@ pacstrap -K /mnt base base-devel linux linux-firmware sudo ntfs-3g networkmanage
     \item[aria2:] aria2 es una ligera utilidad de descarga multiprotocolo y multifuente.
     \item[zsh:] \textit{Shell} potente que funciona como shell interactivo y como intérprete de lenguajes de scripting.
     \item[neovim:] Editor de texto plano de gran potencia.
-    \item[grub:] Gestor multiarranque.
+    \item[grub:] Gestor multiarranque (válido tanto para BIOS como para UEFI).
+    \item[efibootmgr:] Herramienta para gestionar las entradas de arranque EFI (solo necesaria en instalaciones UEFI).
+    \item[sddm:] Gestor de sesión gráfico (\textit{Simple Desktop Display Manager}).
+    \item[plasma:] Entorno de escritorio KDE Plasma.
     \item[openssh:] Protocolo de red para iniciar una sesión en una máquina remota.
     \item[git:] Programa para control de versiones.
   \end{paquetes}

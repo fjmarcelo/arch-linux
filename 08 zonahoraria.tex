@@ -1,10 +1,9 @@
-\section{Configuración de Arch Linux}
+\section{Zona horaria}
 \subsection{Zona horaria}
-\begin{frame}
 
   \begin{tcolorbox}[title=Establecemos la zona horaria que es {\color{red}Atlántico/Canarias}]
-    \begin{lstlisting}[style=bashstyle]
-ln -sf /usr/share/zoneinfo/{\color{red}Atlantic/Canary} /etc/localtime
+    \begin{lstlisting}[style=bashstyle, escapeinside={(*}{*)}]
+ln -sf /usr/share/zoneinfo/(*\color{red}Atlantic/Canary*) /etc/localtime
     \end{lstlisting}
 \end{tcolorbox}
 
@@ -13,5 +12,4 @@ ln -sf /usr/share/zoneinfo/{\color{red}Atlantic/Canary} /etc/localtime
 hwclock --systohc
     \end{lstlisting}
 \end{tcolorbox}
-\end{frame}
 \newpage

@@ -2,6 +2,9 @@
 \begin{enumerate}
   \item Comprobamos si la ISO tiene más de un mes. Si es así, hay que descargar la última. Siempre se publica una nueva cada
         primero de mes.
-    \item Hay que descargarla desde de este \href{https://ftp.tu-chemnitz.de/pub/linux/archlinux/iso/archlinux-2025.11.01-x86\_64.iso}{repositorio}.\footnote{\texttt{https://ftp.tu-chemnitz.de/pub/linux/archlinux/iso/archlinux-2025.11.01-x86\_64.iso}}
-  \item  Y tostamos\dots
+  \item Hay que descargarla desde la \href{https://archlinux.org/download/}{página oficial de descargas de Arch Linux}.\footnote{\texttt{https://archlinux.org/download/}}
+  \item Tostamos la ISO en un USB con \texttt{Ventoy} o con la orden \texttt{dd}:
+    \begin{tcolorbox}[title=Ejemplo con \texttt{dd} (sustituir \texttt{/dev/sdX} por el dispositivo real)]
+      \orden{dd if=archlinux-*.iso of=/dev/sdX bs=4M status=progress \&\& sync}
+    \end{tcolorbox}
 \end{enumerate}

@@ -1,29 +1,28 @@
-\section{Configuración de Arch Linux}
+\section{Localización}
 \subsection{Localización}
 
     {\color{blue}Editamos con {\ttfamily nano} {\color{red}\ttfamily /etc/locale.gen}}\\\vspace{3mm}
 
     \begin{tcolorbox}[title=Aquí configuramos el idioma]
     \begin{lstlisting}[style=bashstyle]
-      nano /etc/locale.gen
+nano /etc/locale.gen
     \end{lstlisting}
     \end{tcolorbox}
     \begin{tcolorbox}[title=Descomentamos la línea que contenga {\color{red}es\_ES.UTF-8 UTF-8}]
       \centering
       \includegraphics[width=.3\textwidth]{9 localizacion.png}\\
     \end{tcolorbox}
-    
+
     \begin{tcolorbox}[title=Y tras guardar:]
     \begin{lstlisting}[style=bashstyle]
-      locale-gen
+locale-gen
     \end{lstlisting}
     \end{tcolorbox}
-    
 
     \begin{tcolorbox}[title=Para establecer el idioma por defecto:]
     \begin{lstlisting}[style=bashstyle]
-	    echo 'LANG=es_ES.UTF-8' > /etc/locale.conf
-    	echo 'KEYMAP=es' > /etc/vconsole.conf
+echo 'LANG=es_ES.UTF-8' > /etc/locale.conf
+echo 'KEYMAP=es' > /etc/vconsole.conf
     \end{lstlisting}
     \end{tcolorbox}
 \newpage

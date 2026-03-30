@@ -1,4 +1,4 @@
-\usepackage[utf8]{inputenc}
+% inputenc no se usa con XeLaTeX/LuaLaTeX (fontspec ya gestiona la codificación)
 \usepackage[spanish]{babel}
 \usepackage{microtype}
 \usepackage{listings}
@@ -12,7 +12,7 @@
 \usepackage{nonfloat}
 \usepackage{graphicx}
 \usepackage{color}
-\usepackage[table]{xcolor}
+\usepackage[table]{xcolor}    % cargado una sola vez
 \usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
 \usepackage[margin=2cm]{geometry}
 \usepackage[most]{tcolorbox}
@@ -23,18 +23,17 @@
 \usepackage{amsmath}
 \usepackage{ifsym}
 \usepackage{wrapfig}
-\usepackage{enumitem}
+\usepackage{enumitem}          % cargado una sola vez
 \usepackage{titlesec}
 \usepackage{tabularx}
 \usepackage{bold-extra}
-\usepackage[table]{xcolor}
 \usepackage{fontspec}
 \usepackage{fontawesome5}
 \usepackage{bbding}
 \usepackage{longtable}
 \usepackage{multirow}
 \usepackage{fancyvrb}
-\usepackage{tocloft}
+\usepackage{tocloft}           % cargado una sola vez
 \usepackage{fancybox}
 \usepackage{pdflscape}
 \usepackage[colorlinks=true, urlcolor=blue, linkcolor=black]{hyperref}
@@ -42,9 +41,7 @@
 
 \setmainfont{Calibri} % sets the roman font
 \setsansfont{Calibri} % sets the sans font
-\setmonofont[Scale=.8]{OCR-A} % sets the monospace font
 \setmonofont[Scale=.8]{FiraCode-Regular} % sets the monospace font
-\setlength{\parskip}{-4mm}
 
 \newcommand{\vig}{\textbullet\hspace{1ex}\ }
 \newcommand{\SigCol}{\color{grisOscuro}\begin{flushright}\raisebox{0.3 em}{Continúa en la  siguiente columna} \ArrowBoldDownRight\end{flushright}}
@@ -62,7 +59,7 @@
 \newcommand{\momento}[1]{\ovalbox{\textbf{\texttt{t#1}}}\hspace{2mm}}
 
 % Formateando el índice de contenidos
-\usepackage{tocloft}
+% (tocloft ya fue cargado arriba)
 \renewcommand{\contentsname}{Contenido}
 %\setlength\cftparskip{-2pt}
 %\setlength\cftaftertoctitleskip{2pt}
@@ -239,13 +236,13 @@
 {\color{red}\textbf{Precaución: }}#1%
 \end{minipage}}}
 
-\title{\textbf{\master}}
-\author{\includegraphics[width=.5\textwidth,bb=0 0 1195 829]{Oracle12c-Intecssa.png}}
-\date{}
+% \title y \author se definen en el documento principal, no aquí
+% \title{\textbf{\master}}
+% \author{\includegraphics[width=.5\textwidth,bb=0 0 1195 829]{Oracle12c-Intecssa.png}}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
 
-\usepackage{enumitem}  % See https://www.ctan.org/pkg/enumitem
+% enumitem ya fue cargado arriba — See https://www.ctan.org/pkg/enumitem
 \renewcommand{\lstlistingname}{Código}
 \newlist{paquetes}{description}{1}
 \setlist[paquetes]{style=nextline,
