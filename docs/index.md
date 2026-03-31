@@ -22,4 +22,12 @@ Guía de instalación de **Arch Linux** paso a paso, desde la descarga de la ISO
 
 ---
 
+<div align="center">
+  <a href="arch-linux.pdf" download class="md-button md-button--primary">
+    ⬇ Descargar guía en PDF
+  </a>
+</div>
+
+---
+
 *Autor: Félix J. Marcelo Wirnitzer*
