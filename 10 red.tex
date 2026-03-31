@@ -15,11 +15,27 @@ echo Lusitania > /etc/hostname
 127.0.1.1  Lusitania
 \end{lstlisting}
 \end{tcolorbox}
-    
 
-\begin{tcolorbox}[title=Habilitamos {\ttfamily NetworkManager} para su arranque automático]
+\subsection{Gestión de red}
+
+Arch Linux ofrece dos opciones principales. Elige según el caso de uso:
+
+\begin{tcolorbox}[title={\faDesktop\hspace*{0.5em} NetworkManager} — recomendado para escritorio]
 \begin{lstlisting}[style=bashstyle]
 systemctl enable NetworkManager
 \end{lstlisting}
+\tcblower
+\scriptsize Se integra con GNOME, KDE y otros escritorios. Gestiona Wi-Fi, VPN y conexiones móviles de forma automática.
+Ya está incluido en el \texttt{pacstrap} del paso anterior.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title={\faServer\hspace*{0.5em} systemd-networkd} — recomendado para servidor o instalación mínima]
+\begin{lstlisting}[style=bashstyle]
+systemctl enable systemd-networkd
+systemctl enable systemd-resolved
+\end{lstlisting}
+\tcblower
+\scriptsize Opción más ligera. Requiere crear un fichero de configuración por interfaz en \texttt{/etc/systemd/network/}.
+Usa \texttt{ip link} para obtener el nombre real de la interfaz.
 \end{tcolorbox}
 \newpage

@@ -1,5 +1,27 @@
 # 6. Instalación del sistema base
 
+## Optimizar los mirrors
+
+Antes de instalar, optimizamos la lista de mirrors para usar los más rápidos y cercanos.
+Esto hace que `pacstrap` sea considerablemente más rápido, especialmente en conexiones lentas o desde Canarias.
+
+```bash
+reflector --country Spain --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+!!! tip "¿Qué hace esto?"
+    `reflector` consulta los mirrors disponibles, los ordena por velocidad y guarda el resultado
+    en `/etc/pacman.d/mirrorlist`. `pacman` (y por tanto `pacstrap`) usa ese fichero para saber
+    desde dónde descargar los paquetes.
+
+!!! note "Si estás en Canarias o fuera de la península"
+    Añade más países para tener más opciones:
+    ```bash
+    reflector --country Spain,France,Germany --sort rate --save /etc/pacman.d/mirrorlist
+    ```
+
+---
+
 ## Actualización del catálogo de paquetes
 
 ```bash

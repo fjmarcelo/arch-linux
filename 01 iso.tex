@@ -1,4 +1,4 @@
-\section{Descargamos la ISO de Arch Linux}
+\section{Descargar la ISO de Arch Linux}
 \begin{enumerate}
   \item Comprobamos si la ISO tiene más de un mes. Si es así, hay que descargar la última. Siempre se publica una nueva cada
         primero de mes.
@@ -8,3 +8,29 @@
       \orden{dd if=archlinux-*.iso of=/dev/sdX bs=4M status=progress \&\& sync}
     \end{tcolorbox}
 \end{enumerate}
+
+\subsection{Verificación de integridad y autenticidad}
+
+Antes de arrancar la ISO conviene verificar que la descarga es íntegra y auténtica.
+Si la ISO está comprometida, todo lo que viene después tampoco es de fiar.
+
+\begin{tcolorbox}[title=Verificar el hash SHA256]
+\begin{lstlisting}[style=bashstyle]
+sha256sum archlinux-*.iso
+\end{lstlisting}
+\tcblower
+\scriptsize Compara la salida con el hash publicado en \texttt{archlinux.org/download}. Deben coincidir exactamente.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Verificar la firma GPG]
+\begin{lstlisting}[style=bashstyle]
+gpg --keyserver-options auto-key-retrieve \
+    --verify archlinux-*.iso.sig
+\end{lstlisting}
+\tcblower
+\scriptsize Resultado esperado: \texttt{gpg: Buena firma de "Pierre Schmitz <pierre@archlinux.org>"}. El aviso sobre clave no certificada es normal.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=red!5, colframe=red!70!black, title={\color{red}\textbf{Si el hash o la firma no coinciden}}]
+No uses esa ISO. Vuelve a descargarla desde un mirror diferente y repite la verificación. Una ISO comprometida puede instalar software malicioso sin que lo notes.
+\end{tcolorbox}

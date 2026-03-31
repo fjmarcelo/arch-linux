@@ -1,18 +1,96 @@
 \section{Entornos gráficos}
-\subsection{Instalación}
 
-Como ya podemos usar {\color{brown}\texttt{yay}}
+Antes de instalar un escritorio hay que asegurarse de que los drivers de vídeo
+están correctamente instalados. Es uno de los puntos donde más alumnos se atascan.
 
-  \begin{tcolorbox}[title=Para instalar \textbf{GNOME}]
-    \orden{yay -S gnome gdm}
+\subsection{Identificar la tarjeta gráfica}
 
-    \orden{systemctl enable gdm}
-  \end{tcolorbox}
+\begin{tcolorbox}[title=Identificamos el hardware gráfico]
+\begin{lstlisting}[style=bashstyle]
+lspci | grep -i vga
+\end{lstlisting}
+\end{tcolorbox}
 
-  \begin{tcolorbox}[title=Para instalar \textbf{Plasma}]
-    \orden{yay -S plasma sddm}
+\subsection{Drivers de vídeo}
 
-    \orden{systemctl enable sddm}
-  \end{tcolorbox}
+\begin{tcolorbox}[title=Intel o AMD — Mesa (recomendado)]
+\begin{lstlisting}[style=bashstyle]
+yay -S mesa
+\end{lstlisting}
+\tcblower
+\scriptsize Proporciona soporte OpenGL y Vulkan para Intel y AMD. Opción por defecto y recomendada para Wayland.
+\end{tcolorbox}
 
-    {\color{blue}Podemos instalar cualquier escritorio de esta manera tan sencilla.}
+\begin{tcolorbox}[title=NVIDIA — driver propietario]
+\begin{lstlisting}[style=bashstyle]
+yay -S nvidia nvidia-utils
+\end{lstlisting}
+\tcblower
+\scriptsize Para RTX 2000 o más nuevas puede usarse también \texttt{nvidia-open}. Para kernels LTS, usa \texttt{nvidia-lts}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Hardware antiguo o genérico]
+\begin{lstlisting}[style=bashstyle]
+yay -S xf86-video-vesa
+\end{lstlisting}
+\end{tcolorbox}
+
+\subsection{Entornos de escritorio}
+
+\begin{tcolorbox}[title=Instalar \textbf{GNOME}]
+\begin{lstlisting}[style=bashstyle]
+yay -S gnome gdm
+systemctl enable gdm
+\end{lstlisting}
+\tcblower
+\scriptsize Entorno completo con excelente soporte Wayland. \texttt{gdm} es su display manager nativo.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Instalar \textbf{KDE Plasma}]
+\begin{lstlisting}[style=bashstyle]
+yay -S plasma sddm
+systemctl enable sddm
+\end{lstlisting}
+\tcblower
+\scriptsize Altamente configurable. \texttt{sddm} es el display manager recomendado por KDE.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Instalar \textbf{XFCE} (opción ligera)]
+\begin{lstlisting}[style=bashstyle]
+yay -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
+systemctl enable lightdm
+\end{lstlisting}
+\tcblower
+\scriptsize Ideal para hardware con pocos recursos. Consume sensiblemente menos RAM que GNOME o KDE.
+\end{tcolorbox}
+
+\subsection{Compositores Wayland (caso avanzado)}
+
+\begin{tcolorbox}[title=\textbf{Hyprland} — tiling compositor Wayland]
+\begin{lstlisting}[style=bashstyle]
+yay -S hyprland waybar wofi kitty
+\end{lstlisting}
+\tcblower
+\scriptsize Se inicia desde la TTY con \texttt{Hyprland}. Sin necesidad de display manager.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=\textbf{Sway} — equivalente Wayland de i3]
+\begin{lstlisting}[style=bashstyle]
+yay -S sway swaybar dmenu foot
+\end{lstlisting}
+\tcblower
+\scriptsize Se inicia con \texttt{sway}. Más estable y conservador que Hyprland.
+\end{tcolorbox}
+
+\subsection{Reinicio y verificación}
+
+\begin{tcolorbox}[title=Salimos del chroot y reiniciamos]
+\begin{lstlisting}[style=bashstyle]
+exit
+umount -R /mnt
+reboot
+\end{lstlisting}
+\tcblower
+\scriptsize Al arrancar deberías ver la pantalla de login del display manager.
+Si el sistema arranca en TTY, comprueba: \texttt{systemctl status gdm} (o \texttt{sddm}, \texttt{lightdm}).
+\end{tcolorbox}

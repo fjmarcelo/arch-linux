@@ -15,7 +15,7 @@ useradd -m viriato
 passwd viriato
 \end{lstlisting}
 \tcblower
-Con el parámetro {\color{brown}\textbf{-m}} indicamos que debe crear el directorio {\ttfamily\color{red}/home/viriato}. 
+Con el parámetro {\color{brown}\textbf{-m}} indicamos que debe crear el directorio {\ttfamily\color{red}/home/viriato}.
 \end{tcolorbox}
 
 \subsection{Privilegios \textit{sudo} para \color{blue}viriato}
@@ -23,18 +23,29 @@ Con el parámetro {\color{brown}\textbf{-m}} indicamos que debe crear el directo
 
 \begin{tcolorbox}[colframe=red!75!black, title=\twemoji{warning} Edición segura de sudoers con \texttt{visudo}]
   \small
-  Nunca edites \texttt{/etc/sudoers} directamente con un editor de texto. Un error de sintaxis dejaría el sistema sin acceso a \texttt{sudo}. Usa siempre \texttt{visudo}, que valida la sintaxis antes de guardar:
+  Nunca edites \texttt{/etc/sudoers} directamente. Un error de sintaxis dejaría el sistema
+  sin acceso a \texttt{sudo}. Usa \texttt{visudo}, que valida la sintaxis antes de guardar:
 \begin{lstlisting}[style=bashstyle]
 EDITOR=nano visudo
 \end{lstlisting}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title=Y añadimos la siguiente línea]
+\begin{tcolorbox}[title=Configuración para \textbf{entorno de clase o prácticas}]
 \begin{lstlisting}[style=bashstyle]
 viriato ALL=(ALL:ALL) NOPASSWD:ALL
 \end{lstlisting}
-  \tcblower
-  \scriptsize
-  Guardamos y cerramos el fichero. \textbf{Nota:} \texttt{NOPASSWD:ALL} elimina la petición de contraseña para \texttt{sudo}; es útil en clase, pero no se recomienda en sistemas en producción.
+\tcblower
+\scriptsize \texttt{NOPASSWD:ALL} elimina la petición de contraseña para \texttt{sudo}.
+Cómodo en clase, pero \textbf{no recomendado en producción}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=green!5, colframe=green!50!black,
+  title=Configuración recomendada para \textbf{entornos reales}]
+\begin{lstlisting}[style=bashstyle]
+viriato ALL=(ALL:ALL) ALL
+\end{lstlisting}
+\tcblower
+\scriptsize Configuración estándar: \texttt{sudo} pide contraseña en cada sesión.
+Es la opción correcta para cualquier sistema en producción o accesible desde Internet.
 \end{tcolorbox}
 \newpage

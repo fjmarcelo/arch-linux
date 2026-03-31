@@ -48,20 +48,20 @@ nav:
   - Preparación:
     - 1. Descargar la ISO: 01-iso.md
     - 2. Configurar el teclado: 02-teclado.md
-    - 3. Modo de arranque: 03-modo-arranque.md
-    - 4. Conexión a Internet: 04-internet.md
+    - 3. Detectar el modo de arranque: 03-modo-arranque.md
+    - 4. Comprobar la conexión a Internet: 04-internet.md
   - Instalación:
-    - 5. Particionado: 05-particionado.md
-    - 6. Sistema base: 06-instalacion.md
-    - 7. Generar fstab: 07-fstab.md
+    - 5. Particionar el disco: 05-particionado.md
+    - 6. Instalar el sistema base: 06-instalacion.md
+    - 7. Generar el fstab: 07-fstab.md
   - Configuración del sistema:
-    - 8. Zona horaria: 08-zonahoraria.md
-    - 9. Localización: 09-localizacion.md
-    - 10. Red y hostname: 10-red.md
-    - 11. Usuarios: 11-usuarios.md
-    - 12. Microcode: 12-microcode.md
-    - 13. GRUB: 13-grub.md
+    - 8. Configurar la zona horaria: 08-zonahoraria.md
+    - 9. Configurar la localización: 09-localizacion.md
+    - 10. Configurar red y hostname: 10-red.md
+    - 11. Gestionar usuarios: 11-usuarios.md
+    - 12. Instalar el microcode: 12-microcode.md
+    - 13. Instalar GRUB: 13-grub.md
   - Post-instalación:
     - 14. Repositorio AUR: 14-aur.md
-    - 15. Instalación de yay: 15-yay.md
-    - 16. Entornos gráficos: 16-entornos-graficos.md
+    - 15. Instalar yay: 15-yay.md
+    - 16. Instalar entorno gráfico: 16-entornos-graficos.md

@@ -27,14 +27,28 @@ El parámetro `-m` indica que debe crearse el directorio `/home/viriato`.
     EDITOR=nano visudo
     ```
 
-Añadimos la siguiente línea al fichero:
+Añadimos una de las siguientes líneas al fichero, según el entorno:
 
-```
-viriato ALL=(ALL:ALL) NOPASSWD:ALL
-```
+=== "Entorno de clase o prácticas"
+
+    ```
+    viriato ALL=(ALL:ALL) NOPASSWD:ALL
+    ```
+
+    `NOPASSWD:ALL` elimina la petición de contraseña para `sudo`. Cómodo en clase,
+    pero **no recomendado en producción**.
+
+=== "Entorno real (recomendado)"
+
+    ```
+    viriato ALL=(ALL:ALL) ALL
+    ```
+
+    Configuración estándar: `sudo` pide contraseña en cada sesión. Es la opción correcta
+    para cualquier sistema en producción o accesible desde Internet.
 
 Guardamos y cerramos.
 
-!!! warning "Nota de seguridad"
-    `NOPASSWD:ALL` elimina la petición de contraseña para `sudo`. Es útil en entornos de
-    clase o pruebas, pero **no se recomienda en sistemas en producción**.
+!!! tip "¿Por qué importa la diferencia?"
+    En un entorno de prácticas, `NOPASSWD` acelera el trabajo. En producción, pedir la contraseña
+    es una capa de seguridad que evita que un script malicioso escale privilegios sin interacción del usuario.

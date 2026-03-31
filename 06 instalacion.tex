@@ -1,4 +1,20 @@
 \section{Instalación del sistema base}
+
+\subsection{Optimizar los mirrors}
+
+Antes de instalar, optimizamos la lista de mirrors para usar los más rápidos y cercanos.
+Esto hace que \texttt{pacstrap} sea mucho más rápido, especialmente en Canarias o conexiones lentas.
+
+\begin{tcolorbox}[title=Seleccionamos los mirrors más rápidos de España]
+\begin{lstlisting}[style=bashstyle]
+reflector --country Spain --sort rate --save /etc/pacman.d/mirrorlist
+\end{lstlisting}
+\tcblower
+\scriptsize \texttt{reflector} consulta y ordena los mirrors por velocidad y guarda el resultado en \texttt{/etc/pacman.d/mirrorlist},
+que es el fichero que usa \texttt{pacman} (y \texttt{pacstrap}) para las descargas.
+Si estás en Canarias, añade más países: \texttt{--country Spain,France,Germany}
+\end{tcolorbox}
+
 \subsection{Actualización del catálogo de paquetes}
 \begin{tcolorbox}[title=Primero actualizamos el catálogo de paquetes]
     \begin{lstlisting}[style=bashstyle]
