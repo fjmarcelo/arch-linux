@@ -1,3 +1,83 @@
-\begin{frame}[plain]
-	\maketitle
-\end{frame}
+% ============================================================
+%  Portada elegante — Instalación de Arch Linux
+%  Usa: xcolor, tikz (via tcolorbox[most]), graphicx, fontspec
+% ============================================================
+
+\definecolor{archblue}{HTML}{1793D1}
+\definecolor{coverdark}{HTML}{16213E}
+\definecolor{covermid}{HTML}{0F3460}
+
+\newgeometry{margin=0pt}
+\thispagestyle{empty}
+\pagecolor{coverdark}
+
+\begin{tikzpicture}[remember picture, overlay]
+
+  %% ── Fondo: degradado simulado con rectángulos ──────────────
+  \fill[covermid]
+    (current page.south west) rectangle (current page.north east);
+  \fill[coverdark, opacity=0.6]
+    ([yshift=8cm]current page.south west) rectangle (current page.north east);
+
+  %% ── Franja izquierda ───────────────────────────────────────
+  \fill[archblue]
+    (current page.south west)
+    rectangle ([xshift=6pt]current page.north west);
+
+  %% ── Franja inferior ────────────────────────────────────────
+  \fill[archblue!80!black]
+    (current page.south west)
+    rectangle ([yshift=2.4cm]current page.south east);
+
+  %% ── Círculos decorativos tras el logo ──────────────────────
+  \node[circle, fill=archblue!8!coverdark,  minimum size=10.5cm]
+    at ([yshift=-8cm]current page.north) {};
+  \node[circle, draw=archblue!30, line width=0.8pt, minimum size=10.9cm]
+    at ([yshift=-8cm]current page.north) {};
+  \node[circle, draw=archblue!12, line width=0.4pt, minimum size=12cm]
+    at ([yshift=-8cm]current page.north) {};
+
+  %% ── Logo Arch Linux ────────────────────────────────────────
+  \node at ([yshift=-8cm]current page.north) {%
+    \includegraphics[width=6cm]{arch_linux.png}%
+  };
+
+  %% ── Título principal ───────────────────────────────────────
+  \node[
+    text=white!80!coverdark,
+    font=\fontsize{32}{40}\selectfont\bfseries
+  ] at ([yshift=-14.8cm]current page.north) {Instalación de};
+
+  \node[
+    text=archblue,
+    font=\fontsize{54}{64}\selectfont\bfseries
+  ] at ([yshift=-17.8cm]current page.north) {Arch Linux};
+
+  %% ── Línea decorativa ───────────────────────────────────────
+  \draw[archblue!50, line width=0.6pt]
+    ([yshift=-19.8cm, xshift=-5.5cm]current page.north)
+    -- ([yshift=-19.8cm, xshift=5.5cm]current page.north);
+
+  %% ── Subtítulo ──────────────────────────────────────────────
+  \node[
+    text=white!50!coverdark,
+    font=\large\itshape
+  ] at ([yshift=-21.2cm]current page.north)
+    {Guía de instalación paso a paso};
+
+  %% ── Autor y período en franja inferior ─────────────────────
+  \node[text=white, font=\normalsize\bfseries]
+    at ([yshift=1.4cm]current page.south)
+    {Félix J. Marcelo Wirnitzer};
+
+  \node[text=white!70!black, font=\small]
+    at ([yshift=0.7cm]current page.south)
+    {Curso \periodo};
+
+\end{tikzpicture}
+
+\null\vfill
+\newpage
+\restoregeometry
+\pagecolor{white}
+\color{black}
