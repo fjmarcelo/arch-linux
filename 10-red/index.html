@@ -27,7 +27,7 @@
     
     
       
-        <title>10. Red y hostname - Instalación de Arch Linux</title>
+        <title>10. Configurar red y hostname - Instalación de Arch Linux</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#10-configuracion-de-la-red" class="md-skip">
+        <a href="#10-red-y-hostname" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              10. Red y hostname
+              10. Configurar red y hostname
             
           </span>
         </div>
@@ -488,7 +488,7 @@
   <span class="md-ellipsis">
     
   
-    3. Modo de arranque
+    3. Detectar el modo de arranque
   
 
     
@@ -516,7 +516,7 @@
   <span class="md-ellipsis">
     
   
-    4. Conexión a Internet
+    4. Comprobar la conexión a Internet
   
 
     
@@ -605,7 +605,7 @@
   <span class="md-ellipsis">
     
   
-    5. Particionado
+    5. Particionar el disco
   
 
     
@@ -633,7 +633,7 @@
   <span class="md-ellipsis">
     
   
-    6. Sistema base
+    6. Instalar el sistema base
   
 
     
@@ -661,7 +661,7 @@
   <span class="md-ellipsis">
     
   
-    7. Generar fstab
+    7. Generar el fstab
   
 
     
@@ -753,7 +753,7 @@
   <span class="md-ellipsis">
     
   
-    8. Zona horaria
+    8. Configurar la zona horaria
   
 
     
@@ -781,7 +781,7 @@
   <span class="md-ellipsis">
     
   
-    9. Localización
+    9. Configurar la localización
   
 
     
@@ -818,7 +818,7 @@
   <span class="md-ellipsis">
     
   
-    10. Red y hostname
+    10. Configurar red y hostname
   
 
     
@@ -836,7 +836,7 @@
   <span class="md-ellipsis">
     
   
-    10. Red y hostname
+    10. Configurar red y hostname
   
 
     
@@ -884,10 +884,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#habilitar-networkmanager" class="md-nav__link">
+  <a href="#gestion-de-red" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Habilitar NetworkManager
+        Gestión de red
       
     </span>
   </a>
@@ -917,7 +917,7 @@
   <span class="md-ellipsis">
     
   
-    11. Usuarios
+    11. Gestionar usuarios
   
 
     
@@ -945,7 +945,7 @@
   <span class="md-ellipsis">
     
   
-    12. Microcode
+    12. Instalar el microcode
   
 
     
@@ -973,7 +973,7 @@
   <span class="md-ellipsis">
     
   
-    13. GRUB
+    13. Instalar GRUB
   
 
     
@@ -1090,7 +1090,7 @@
   <span class="md-ellipsis">
     
   
-    15. Instalación de yay
+    15. Instalar yay
   
 
     
@@ -1118,7 +1118,7 @@
   <span class="md-ellipsis">
     
   
-    16. Entornos gráficos
+    16. Instalar entorno gráfico
   
 
     
@@ -1188,10 +1188,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#habilitar-networkmanager" class="md-nav__link">
+  <a href="#gestion-de-red" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Habilitar NetworkManager
+        Gestión de red
       
     </span>
   </a>
@@ -1215,7 +1215,7 @@
 
 
 
-<h1 id="10-configuracion-de-la-red">10. Configuración de la red</h1>
+<h1 id="10-red-y-hostname">10. Red y hostname</h1>
 <h2 id="nombre-del-equipo-hostname">Nombre del equipo (hostname)</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">echo</span><span class="w"> </span>Lusitania<span class="w"> </span>&gt;<span class="w"> </span>/etc/hostname
 </code></pre></div></td></tr></table></div>
@@ -1227,14 +1227,54 @@
 <p>Añadimos las siguientes líneas:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="m">127</span>.0.0.1<span class="w">  </span>localhost
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>::1<span class="w">        </span>localhost
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="m">127</span>.0.1.1<span class="w">  </span>Lusitania
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>127.0.0.1  localhost
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>::1        localhost
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>127.0.1.1  Lusitania
 </code></pre></div></td></tr></table></div>
-<h2 id="habilitar-networkmanager">Habilitar NetworkManager</h2>
-<p>Para que la red se inicie automáticamente al arrancar:</p>
+<hr />
+<h2 id="gestion-de-red">Gestión de red</h2>
+<p>Arch Linux ofrece dos opciones principales. Elige la que corresponda a tu caso de uso:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">NetworkManager (escritorio)</label><label for="__tabbed_1_2">systemd-networkd (servidor / minimal)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>La opción recomendada si vas a instalar un entorno gráfico. Se integra con GNOME,
+KDE y otros escritorios, y gestiona Wi-Fi, VPN y conexiones móviles automáticamente.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>NetworkManager
 </code></pre></div></td></tr></table></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><code>NetworkManager</code> ya está incluido en el <code>pacstrap</code> del paso anterior.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Opción más ligera, adecuada para servidores o instalaciones sin entorno gráfico.
+Requiere configurar un fichero por interfaz en <code>/etc/systemd/network/</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>systemd-networkd
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>systemd-resolved
+</code></pre></div></td></tr></table></div>
+<p>Crea el fichero de configuración para la interfaz (sustituye <code>eth0</code> por el nombre real):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/systemd/network/20-wired.network<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="s">[Match]</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="s">Name=eth0</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="s">[Network]</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="s">DHCP=yes</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="s">EOF</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">¿Cómo sé el nombre de mi interfaz?</p>
+<p>Usa <code>ip link</code> para listar las interfaces de red disponibles.</p>
+</div>
+</div>
+</div>
+</div>
 
 
 

@@ -25,7 +25,7 @@
     
     
       
-        <title>16. Entornos gráficos - Instalación de Arch Linux</title>
+        <title>16. Instalar entorno gráfico - Instalación de Arch Linux</title>
       
     
     
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              16. Entornos gráficos
+              16. Instalar entorno gráfico
             
           </span>
         </div>
@@ -486,7 +486,7 @@
   <span class="md-ellipsis">
     
   
-    3. Modo de arranque
+    3. Detectar el modo de arranque
   
 
     
@@ -514,7 +514,7 @@
   <span class="md-ellipsis">
     
   
-    4. Conexión a Internet
+    4. Comprobar la conexión a Internet
   
 
     
@@ -603,7 +603,7 @@
   <span class="md-ellipsis">
     
   
-    5. Particionado
+    5. Particionar el disco
   
 
     
@@ -631,7 +631,7 @@
   <span class="md-ellipsis">
     
   
-    6. Sistema base
+    6. Instalar el sistema base
   
 
     
@@ -659,7 +659,7 @@
   <span class="md-ellipsis">
     
   
-    7. Generar fstab
+    7. Generar el fstab
   
 
     
@@ -748,7 +748,7 @@
   <span class="md-ellipsis">
     
   
-    8. Zona horaria
+    8. Configurar la zona horaria
   
 
     
@@ -776,7 +776,7 @@
   <span class="md-ellipsis">
     
   
-    9. Localización
+    9. Configurar la localización
   
 
     
@@ -804,7 +804,7 @@
   <span class="md-ellipsis">
     
   
-    10. Red y hostname
+    10. Configurar red y hostname
   
 
     
@@ -832,7 +832,7 @@
   <span class="md-ellipsis">
     
   
-    11. Usuarios
+    11. Gestionar usuarios
   
 
     
@@ -860,7 +860,7 @@
   <span class="md-ellipsis">
     
   
-    12. Microcode
+    12. Instalar el microcode
   
 
     
@@ -888,7 +888,7 @@
   <span class="md-ellipsis">
     
   
-    13. GRUB
+    13. Instalar GRUB
   
 
     
@@ -1008,7 +1008,7 @@
   <span class="md-ellipsis">
     
   
-    15. Instalación de yay
+    15. Instalar yay
   
 
     
@@ -1038,6 +1038,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Instalar entorno gráfico
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1045,7 +1063,7 @@
   <span class="md-ellipsis">
     
   
-    16. Entornos gráficos
+    16. Instalar entorno gráfico
   
 
     
@@ -1054,6 +1072,80 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identificar-la-tarjeta-grafica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificar la tarjeta gráfica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalar-los-drivers-de-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalar los drivers de vídeo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entornos-de-escritorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entornos de escritorio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compositores-wayland-caso-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compositores Wayland (caso avanzado)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinicio-y-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reinicio y verificación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1087,6 +1179,69 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#identificar-la-tarjeta-grafica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificar la tarjeta gráfica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instalar-los-drivers-de-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instalar los drivers de vídeo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entornos-de-escritorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entornos de escritorio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compositores-wayland-caso-avanzado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compositores Wayland (caso avanzado)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinicio-y-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reinicio y verificación
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1103,30 +1258,109 @@
 
 
 <h1 id="16-entornos-graficos">16. Entornos gráficos</h1>
-<p>Con <code>yay</code> disponible, instalar un escritorio es muy sencillo.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">GNOME</label><label for="__tabbed_1_2">KDE Plasma</label></div>
+<p>Antes de instalar un escritorio hay que asegurarse de que los drivers de vídeo están correctamente instalados. Es uno de los puntos donde más alumnos se atascan.</p>
+<hr />
+<h2 id="identificar-la-tarjeta-grafica">Identificar la tarjeta gráfica</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>lspci<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>vga
+</code></pre></div></td></tr></table></div>
+<h2 id="instalar-los-drivers-de-video">Instalar los drivers de vídeo</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Intel / AMD (Mesa)</label><label for="__tabbed_1_2">NVIDIA (propietario)</label><label for="__tabbed_1_3">NVIDIA (open-source)</label><label for="__tabbed_1_4">Hardware antiguo / genérico</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>gnome<span class="w"> </span>gdm
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>gdm
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>mesa
 </code></pre></div></td></tr></table></div>
+<p>Mesa proporciona soporte OpenGL y Vulkan para Intel y AMD. Es la opción por defecto
+y la recomendada para Wayland.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>plasma<span class="w"> </span>sddm
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>sddm
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>nvidia<span class="w"> </span>nvidia-utils
 </code></pre></div></td></tr></table></div>
+<p>Para kernels LTS usa <code>nvidia-lts</code>. Consulta la
+<a href="https://wiki.archlinux.org/title/NVIDIA_(Español)">wiki de Arch sobre NVIDIA</a>
+si el hardware es muy nuevo o antiguo.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>nvidia-open<span class="w"> </span>nvidia-utils
+</code></pre></div></td></tr></table></div>
+<p>Disponible desde la serie RTX 2000. Rendimiento comparable al propietario
+con la ventaja del código abierto.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>xf86-video-vesa
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">¿Cuál elijo?</p>
+<p>Intel → <code>mesa</code>. AMD → <code>mesa</code>. NVIDIA moderna → <code>nvidia</code> o <code>nvidia-open</code>. En caso de duda, <code>mesa</code> funciona para la mayoría del hardware integrado.</p>
+</div>
+<hr />
+<h2 id="entornos-de-escritorio">Entornos de escritorio</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">GNOME</label><label for="__tabbed_2_2">KDE Plasma</label><label for="__tabbed_2_3">XFCE</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>gnome<span class="w"> </span>gdm
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>gdm
+</code></pre></div></td></tr></table></div>
+<p>Entorno completo y moderno con excelente soporte Wayland. <code>gdm</code> es su display manager nativo.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>plasma<span class="w"> </span>sddm
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>sddm
+</code></pre></div></td></tr></table></div>
+<p>Altamente configurable. <code>sddm</code> es el display manager recomendado por KDE.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>xfce4<span class="w"> </span>xfce4-goodies<span class="w"> </span>lightdm<span class="w"> </span>lightdm-gtk-greeter
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>lightdm
+</code></pre></div></td></tr></table></div>
+<p>Opción ligera e ideal para hardware con pocos recursos. Consume sensiblemente menos RAM que GNOME o KDE.</p>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="compositores-wayland-caso-avanzado">Compositores Wayland (caso avanzado)</h2>
+<p>Si prefieres un entorno minimalista y moderno basado en Wayland en lugar de un escritorio completo:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Hyprland</label><label for="__tabbed_3_2">Sway</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>hyprland<span class="w"> </span>waybar<span class="w"> </span>wofi<span class="w"> </span>kitty
+</code></pre></div></td></tr></table></div>
+<p>Tiling compositor Wayland muy popular por su configurabilidad y efectos visuales.
+Se inicia desde la TTY con <code>Hyprland</code>.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>sway<span class="w"> </span>swaybar<span class="w"> </span>dmenu<span class="w"> </span>foot
+</code></pre></div></td></tr></table></div>
+<p>Equivalente Wayland de i3. Más estable y conservador que Hyprland.
+Se inicia desde la TTY con <code>sway</code>.</p>
 </div>
 </div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Puedes instalar cualquier otro entorno de escritorio disponible en los repositorios de
-la misma manera: XFCE, MATE, Cinnamon, i3, Hyprland, etc.</p>
+<p class="admonition-title">Sin display manager</p>
+<p>Los compositores Wayland suelen iniciarse directamente desde la TTY, sin necesidad de GDM, SDDM ni LightDM.</p>
 </div>
 <hr />
-<p>Con esto podemos dar por terminada la instalación de Arch Linux.</p>
+<h2 id="reinicio-y-verificacion">Reinicio y verificación</h2>
+<p>Una vez habilitado el entorno gráfico, salimos del chroot y reiniciamos:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">exit</span><span class="w">          </span><span class="c1"># salir del chroot</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>umount<span class="w"> </span>-R<span class="w"> </span>/mnt
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>reboot
+</code></pre></div></td></tr></table></div>
+<div class="admonition info">
+<p class="admonition-title">Resultado esperado</p>
+<p>Al arrancar deberías ver la pantalla de login del display manager (GDM, SDDM o LightDM).
+Si el sistema arranca en TTY en lugar del entorno gráfico, comprueba que el servicio está habilitado:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>gdm<span class="w">   </span><span class="c1"># o sddm, lightdm</span>
+</code></pre></div></td></tr></table></div>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Wiki oficial</p>
 <p>En caso de dudas, consulta la <a href="https://wiki.archlinux.org/title/Main_page_(Español)">wiki de Arch Linux en español</a>.</p>

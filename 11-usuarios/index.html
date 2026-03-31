@@ -27,7 +27,7 @@
     
     
       
-        <title>11. Usuarios - Instalación de Arch Linux</title>
+        <title>11. Gestionar usuarios - Instalación de Arch Linux</title>
       
     
     
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              11. Usuarios
+              11. Gestionar usuarios
             
           </span>
         </div>
@@ -488,7 +488,7 @@
   <span class="md-ellipsis">
     
   
-    3. Modo de arranque
+    3. Detectar el modo de arranque
   
 
     
@@ -516,7 +516,7 @@
   <span class="md-ellipsis">
     
   
-    4. Conexión a Internet
+    4. Comprobar la conexión a Internet
   
 
     
@@ -605,7 +605,7 @@
   <span class="md-ellipsis">
     
   
-    5. Particionado
+    5. Particionar el disco
   
 
     
@@ -633,7 +633,7 @@
   <span class="md-ellipsis">
     
   
-    6. Sistema base
+    6. Instalar el sistema base
   
 
     
@@ -661,7 +661,7 @@
   <span class="md-ellipsis">
     
   
-    7. Generar fstab
+    7. Generar el fstab
   
 
     
@@ -753,7 +753,7 @@
   <span class="md-ellipsis">
     
   
-    8. Zona horaria
+    8. Configurar la zona horaria
   
 
     
@@ -781,7 +781,7 @@
   <span class="md-ellipsis">
     
   
-    9. Localización
+    9. Configurar la localización
   
 
     
@@ -809,7 +809,7 @@
   <span class="md-ellipsis">
     
   
-    10. Red y hostname
+    10. Configurar red y hostname
   
 
     
@@ -846,7 +846,7 @@
   <span class="md-ellipsis">
     
   
-    11. Usuarios
+    11. Gestionar usuarios
   
 
     
@@ -864,7 +864,7 @@
   <span class="md-ellipsis">
     
   
-    11. Usuarios
+    11. Gestionar usuarios
   
 
     
@@ -945,7 +945,7 @@
   <span class="md-ellipsis">
     
   
-    12. Microcode
+    12. Instalar el microcode
   
 
     
@@ -973,7 +973,7 @@
   <span class="md-ellipsis">
     
   
-    13. GRUB
+    13. Instalar GRUB
   
 
     
@@ -1090,7 +1090,7 @@
   <span class="md-ellipsis">
     
   
-    15. Instalación de yay
+    15. Instalar yay
   
 
     
@@ -1118,7 +1118,7 @@
   <span class="md-ellipsis">
     
   
-    16. Entornos gráficos
+    16. Instalar entorno gráfico
   
 
     
@@ -1234,14 +1234,28 @@ dejaría el sistema sin acceso a <code>sudo</code>. Usa <code>visudo</code>, que
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nv">EDITOR</span><span class="o">=</span>nano<span class="w"> </span>visudo
 </code></pre></div></td></tr></table></div>
 </div>
-<p>Añadimos la siguiente línea al fichero:</p>
+<p>Añadimos una de las siguientes líneas al fichero, según el entorno:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Entorno de clase o prácticas</label><label for="__tabbed_1_2">Entorno real (recomendado)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>viriato ALL=(ALL:ALL) NOPASSWD:ALL
 </code></pre></div></td></tr></table></div>
+<p><code>NOPASSWD:ALL</code> elimina la petición de contraseña para <code>sudo</code>. Cómodo en clase,
+pero <strong>no recomendado en producción</strong>.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>viriato ALL=(ALL:ALL) ALL
+</code></pre></div></td></tr></table></div>
+<p>Configuración estándar: <code>sudo</code> pide contraseña en cada sesión. Es la opción correcta
+para cualquier sistema en producción o accesible desde Internet.</p>
+</div>
+</div>
+</div>
 <p>Guardamos y cerramos.</p>
-<div class="admonition warning">
-<p class="admonition-title">Nota de seguridad</p>
-<p><code>NOPASSWD:ALL</code> elimina la petición de contraseña para <code>sudo</code>. Es útil en entornos de
-clase o pruebas, pero <strong>no se recomienda en sistemas en producción</strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">¿Por qué importa la diferencia?</p>
+<p>En un entorno de prácticas, <code>NOPASSWD</code> acelera el trabajo. En producción, pedir la contraseña
+es una capa de seguridad que evita que un script malicioso escale privilegios sin interacción del usuario.</p>
 </div>
 
 

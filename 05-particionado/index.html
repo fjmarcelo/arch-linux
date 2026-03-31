@@ -27,7 +27,7 @@
     
     
       
-        <title>5. Particionado - Instalación de Arch Linux</title>
+        <title>5. Particionar el disco - Instalación de Arch Linux</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#5-particionado" class="md-skip">
+        <a href="#5-particionado-del-disco" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              5. Particionado
+              5. Particionar el disco
             
           </span>
         </div>
@@ -488,7 +488,7 @@
   <span class="md-ellipsis">
     
   
-    3. Modo de arranque
+    3. Detectar el modo de arranque
   
 
     
@@ -516,7 +516,7 @@
   <span class="md-ellipsis">
     
   
-    4. Conexión a Internet
+    4. Comprobar la conexión a Internet
   
 
     
@@ -617,7 +617,7 @@
   <span class="md-ellipsis">
     
   
-    5. Particionado
+    5. Particionar el disco
   
 
     
@@ -635,7 +635,7 @@
   <span class="md-ellipsis">
     
   
-    5. Particionado
+    5. Particionar el disco
   
 
     
@@ -661,6 +661,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#abrir-cfdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abrir cfdisk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flujo-de-trabajo-en-cfdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flujo de trabajo en cfdisk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#esquemas-de-particionado" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -673,10 +695,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejemplo-mbr-bios-legacy" class="md-nav__link">
+  <a href="#esquema-mbr-bios-legacy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo MBR (BIOS legacy)
+        Esquema MBR (BIOS legacy)
       
     </span>
   </a>
@@ -684,10 +706,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-gpt-con-bios" class="md-nav__link">
+  <a href="#esquema-gpt-con-bios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo GPT con BIOS
+        Esquema GPT con BIOS
       
     </span>
   </a>
@@ -695,10 +717,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-gpt-con-efi-uefi" class="md-nav__link">
+  <a href="#esquema-gpt-con-efi-uefi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo GPT con EFI (UEFI)
+        Esquema GPT con EFI (UEFI)
       
     </span>
   </a>
@@ -711,10 +733,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#montaje-de-las-particiones" class="md-nav__link">
+  <a href="#formatear-y-montar-las-particiones" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Montaje de las particiones
+        Formatear y montar las particiones
       
     </span>
   </a>
@@ -744,7 +766,7 @@
   <span class="md-ellipsis">
     
   
-    6. Sistema base
+    6. Instalar el sistema base
   
 
     
@@ -772,7 +794,7 @@
   <span class="md-ellipsis">
     
   
-    7. Generar fstab
+    7. Generar el fstab
   
 
     
@@ -861,7 +883,7 @@
   <span class="md-ellipsis">
     
   
-    8. Zona horaria
+    8. Configurar la zona horaria
   
 
     
@@ -889,7 +911,7 @@
   <span class="md-ellipsis">
     
   
-    9. Localización
+    9. Configurar la localización
   
 
     
@@ -917,7 +939,7 @@
   <span class="md-ellipsis">
     
   
-    10. Red y hostname
+    10. Configurar red y hostname
   
 
     
@@ -945,7 +967,7 @@
   <span class="md-ellipsis">
     
   
-    11. Usuarios
+    11. Gestionar usuarios
   
 
     
@@ -973,7 +995,7 @@
   <span class="md-ellipsis">
     
   
-    12. Microcode
+    12. Instalar el microcode
   
 
     
@@ -1001,7 +1023,7 @@
   <span class="md-ellipsis">
     
   
-    13. GRUB
+    13. Instalar GRUB
   
 
     
@@ -1118,7 +1140,7 @@
   <span class="md-ellipsis">
     
   
-    15. Instalación de yay
+    15. Instalar yay
   
 
     
@@ -1146,7 +1168,7 @@
   <span class="md-ellipsis">
     
   
-    16. Entornos gráficos
+    16. Instalar entorno gráfico
   
 
     
@@ -1194,6 +1216,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#abrir-cfdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abrir cfdisk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flujo-de-trabajo-en-cfdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flujo de trabajo en cfdisk
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#esquemas-de-particionado" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1206,10 +1250,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejemplo-mbr-bios-legacy" class="md-nav__link">
+  <a href="#esquema-mbr-bios-legacy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo MBR (BIOS legacy)
+        Esquema MBR (BIOS legacy)
       
     </span>
   </a>
@@ -1217,10 +1261,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-gpt-con-bios" class="md-nav__link">
+  <a href="#esquema-gpt-con-bios" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo GPT con BIOS
+        Esquema GPT con BIOS
       
     </span>
   </a>
@@ -1228,10 +1272,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-gpt-con-efi-uefi" class="md-nav__link">
+  <a href="#esquema-gpt-con-efi-uefi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo GPT con EFI (UEFI)
+        Esquema GPT con EFI (UEFI)
       
     </span>
   </a>
@@ -1244,10 +1288,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#montaje-de-las-particiones" class="md-nav__link">
+  <a href="#formatear-y-montar-las-particiones" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Montaje de las particiones
+        Formatear y montar las particiones
       
     </span>
   </a>
@@ -1271,9 +1315,10 @@
 
 
 
-<h1 id="5-particionado">5. Particionado</h1>
-<p>Usaremos la utilidad <code>cfdisk</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Disco mecánico o SSD</label><label for="__tabbed_1_2">Unidad M.2 (NVMe)</label></div>
+<h1 id="5-particionado-del-disco">5. Particionado del disco</h1>
+<p>En este paso vamos a dividir el disco en particiones. Usaremos <code>cfdisk</code>, una herramienta de texto interactiva que resulta más intuitiva que <code>fdisk</code> para quien se acerca por primera vez.</p>
+<h2 id="abrir-cfdisk">Abrir cfdisk</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Disco mecánico o SSD (SATA)</label><label for="__tabbed_1_2">Unidad M.2 (NVMe)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>cfdisk<span class="w"> </span>/dev/sda
@@ -1285,133 +1330,184 @@
 </div>
 </div>
 </div>
+<div class="admonition info">
+<p class="admonition-title">¿Cómo identificar el disco?</p>
+<p>Usa <code>lsblk</code> para ver todos los dispositivos conectados y sus nombres antes de abrir <code>cfdisk</code>.</p>
+</div>
+<hr />
+<h2 id="flujo-de-trabajo-en-cfdisk">Flujo de trabajo en cfdisk</h2>
+<p>Al abrir <code>cfdisk</code> por primera vez en un disco vacío, se te pedirá elegir el <strong>tipo de tabla de particiones</strong>:</p>
+<ul>
+<li><strong><code>gpt</code></strong> → Para sistemas <strong>UEFI</strong> (hardware moderno, recomendado).</li>
+<li><strong><code>dos</code></strong> → Para sistemas <strong>BIOS legacy</strong>.</li>
+</ul>
+<p>Una vez dentro, sigue estos pasos para <strong>crear cada partición</strong>:</p>
+<ol>
+<li>Selecciona el espacio <strong>Free space</strong> con las teclas ↑↓.</li>
+<li>Elige <strong><code>[ New ]</code></strong> y pulsa ++enter++.</li>
+<li>Introduce el <strong>tamaño</strong> (p. ej., <code>512M</code>, <code>4G</code>, <code>100G</code>) y pulsa ++enter++.</li>
+<li>Selecciona <strong><code>[ Type ]</code></strong> para asignar el tipo correcto:<ul>
+<li>Partición EFI → <strong>EFI System</strong></li>
+<li>Partición raíz o home → <strong>Linux filesystem</strong></li>
+<li>Swap → <strong>Linux swap</strong></li>
+</ul>
+</li>
+<li>Repite para cada partición del esquema.</li>
+<li>Cuando hayas creado todas, selecciona <strong><code>[ Write ]</code></strong>, escribe <code>yes</code> para confirmar y luego <strong><code>[ Quit ]</code></strong>.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Los cambios no se aplican hasta que pulsas Write</p>
+<p>Puedes rediseñar el esquema libremente. Solo se graban en el disco cuando confirmas con <code>Write</code>.</p>
+</div>
 <hr />
 <h2 id="esquemas-de-particionado">Esquemas de particionado</h2>
-<h3 id="ejemplo-mbr-bios-legacy">Ejemplo MBR (BIOS legacy)</h3>
+<h3 id="esquema-mbr-bios-legacy">Esquema MBR (BIOS legacy)</h3>
 <table>
 <thead>
 <tr>
 <th>Dispositivo</th>
 <th>Punto de montaje</th>
-<th>Sistema de ficheros</th>
-<th>Comando de formato</th>
+<th>Tipo</th>
+<th>Tamaño recomendado</th>
+<th>Formato</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>/dev/sda1</code></td>
 <td><code>/</code></td>
-<td>ext4</td>
+<td>Linux fs</td>
+<td>20–50 GiB</td>
 <td><code>mkfs.ext4 /dev/sda1</code></td>
 </tr>
 <tr>
 <td><code>/dev/sda2</code></td>
 <td>swap</td>
-<td>swap</td>
+<td>Linux swap</td>
+<td>2–4 GiB</td>
 <td><code>mkswap /dev/sda2</code></td>
 </tr>
 <tr>
 <td><code>/dev/sda3</code></td>
 <td><code>/home</code></td>
-<td>ext4</td>
+<td>Linux fs</td>
+<td>Resto del disco</td>
 <td><code>mkfs.ext4 /dev/sda3</code></td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>Este esquema es válido tanto para arranque BIOS como UEFI.</p>
-</blockquote>
-<hr />
-<h3 id="ejemplo-gpt-con-bios">Ejemplo GPT con BIOS</h3>
+<h3 id="esquema-gpt-con-bios">Esquema GPT con BIOS</h3>
 <table>
 <thead>
 <tr>
 <th>Dispositivo</th>
 <th>Punto de montaje</th>
-<th>Sistema de ficheros</th>
-<th>Comando de formato</th>
+<th>Tipo</th>
+<th>Tamaño recomendado</th>
+<th>Formato</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>/dev/sda1</code></td>
 <td>BIOS boot</td>
-<td>fat32</td>
-<td><code>mkfs.fat -F32 /dev/sda1</code></td>
+<td>BIOS boot</td>
+<td>1 MiB</td>
+<td><em>(sin formato)</em></td>
 </tr>
 <tr>
 <td><code>/dev/sda2</code></td>
 <td><code>/</code></td>
-<td>ext4</td>
+<td>Linux fs</td>
+<td>20–50 GiB</td>
 <td><code>mkfs.ext4 /dev/sda2</code></td>
 </tr>
 <tr>
 <td><code>/dev/sda3</code></td>
 <td>swap</td>
-<td>swap</td>
+<td>Linux swap</td>
+<td>2–4 GiB</td>
 <td><code>mkswap /dev/sda3</code></td>
 </tr>
 <tr>
 <td><code>/dev/sda4</code></td>
 <td><code>/home</code></td>
-<td>ext4</td>
+<td>Linux fs</td>
+<td>Resto del disco</td>
 <td><code>mkfs.ext4 /dev/sda4</code></td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h3 id="ejemplo-gpt-con-efi-uefi">Ejemplo GPT con EFI (UEFI)</h3>
+<h3 id="esquema-gpt-con-efi-uefi">Esquema GPT con EFI (UEFI)</h3>
 <table>
 <thead>
 <tr>
 <th>Dispositivo</th>
 <th>Punto de montaje</th>
-<th>Sistema de ficheros</th>
-<th>Comando de formato</th>
+<th>Tipo</th>
+<th>Tamaño recomendado</th>
+<th>Formato</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>/dev/sda1</code></td>
-<td>EFI (<code>/boot</code>)</td>
-<td>fat32</td>
+<td><code>/boot</code> (EFI)</td>
+<td>EFI System</td>
+<td>512 MiB</td>
 <td><code>mkfs.fat -F32 /dev/sda1</code></td>
 </tr>
 <tr>
 <td><code>/dev/sda2</code></td>
 <td><code>/</code></td>
-<td>ext4</td>
+<td>Linux fs</td>
+<td>20–50 GiB</td>
 <td><code>mkfs.ext4 /dev/sda2</code></td>
 </tr>
 <tr>
 <td><code>/dev/sda3</code></td>
 <td>swap</td>
-<td>swap</td>
+<td>Linux swap</td>
+<td>2–4 GiB</td>
 <td><code>mkswap /dev/sda3</code></td>
 </tr>
 <tr>
 <td><code>/dev/sda4</code></td>
 <td><code>/home</code></td>
-<td>ext4</td>
+<td>Linux fs</td>
+<td>Resto del disco</td>
 <td><code>mkfs.ext4 /dev/sda4</code></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">A tener en cuenta</p>
-<p>Es recomendable que la partición BIOS o EFI sea la primera de todas.</p>
+<p class="admonition-title">La partición EFI o BIOS boot debe ser la primera</p>
+<p>Algunos firmwares fallan si la partición de arranque no está al principio del disco.</p>
 </div>
 <hr />
-<h2 id="montaje-de-las-particiones">Montaje de las particiones</h2>
-<p>Sabiendo que <code>/dev/sda2</code> será la partición raíz:</p>
+<h2 id="formatear-y-montar-las-particiones">Formatear y montar las particiones</h2>
+<p>Una vez escritas las particiones con <code>cfdisk</code>, las formateamos. Ejemplo con esquema GPT+EFI:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>mount<span class="w"> </span>/dev/sda2<span class="w"> </span>/mnt
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/sda1<span class="w"> </span>/mnt/boot
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/sda4<span class="w"> </span>/mnt/home
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a>swapon<span class="w"> </span>/dev/sda3
+<span class="normal"><a href="#__codelineno-2-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>mkfs.fat<span class="w"> </span>-F32<span class="w"> </span>/dev/sda1<span class="w">   </span><span class="c1"># EFI</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>mkfs.ext4<span class="w"> </span>/dev/sda2<span class="w">        </span><span class="c1"># raíz</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>mkswap<span class="w"> </span>/dev/sda3<span class="w">           </span><span class="c1"># swap</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>mkfs.ext4<span class="w"> </span>/dev/sda4<span class="w">        </span><span class="c1"># home</span>
 </code></pre></div></td></tr></table></div>
+<p>Las montamos en <code>/mnt</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>mount<span class="w"> </span>/dev/sda2<span class="w"> </span>/mnt
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/sda1<span class="w"> </span>/mnt/boot
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/sda4<span class="w"> </span>/mnt/home
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>swapon<span class="w"> </span>/dev/sda3
+</code></pre></div></td></tr></table></div>
+<div class="admonition info">
+<p class="admonition-title">Resultado esperado</p>
+<p><code>lsblk</code> debería mostrar las particiones montadas en sus puntos correspondientes. Si ves un error de <code>mount</code>, verifica que el formato de la partición coincide con el sistema de ficheros esperado.</p>
+</div>
 
 
 
