@@ -2,6 +2,14 @@
 
 `yay` es un gestor de paquetes para el AUR que actúa como envoltorio de `pacman`.
 
+!!! warning "yay no puede ejecutarse como root"
+    `yay` prohíbe expresamente su uso por el superusuario. Antes de continuar, cambia
+    al usuario creado en el paso anterior:
+
+    ```bash
+    su - viriato
+    ```
+
 ## Proceso de instalación
 
 **1. Clonamos el repositorio desde el AUR:**
