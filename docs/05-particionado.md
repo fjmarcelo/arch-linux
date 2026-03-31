@@ -4,20 +4,23 @@ En este paso vamos a dividir el disco en particiones. Usaremos `cfdisk`, una her
 
 ## Abrir cfdisk
 
-=== "Disco mecánico o SSD (SATA)"
+Antes de empezar, identifica el nombre del disco con:
 
-    ```bash
-    cfdisk /dev/sda
-    ```
+```bash
+lsblk
+```
 
-=== "Unidad M.2 (NVMe)"
+El nombre del dispositivo depende del tipo de unidad:
 
-    ```bash
-    cfdisk /dev/nvme0n1
-    ```
+- **SATA** (disco mecánico o SSD): `/dev/sda` — las particiones se numeran `/dev/sda1`, `/dev/sda2`…
+- **NVMe** (unidad M.2): `/dev/nvme0n1` — las particiones añaden `p` antes del número: `/dev/nvme0n1p1`, `/dev/nvme0n1p2`…
 
-!!! info "¿Cómo identificar el disco?"
-    Usa `lsblk` para ver todos los dispositivos conectados y sus nombres antes de abrir `cfdisk`.
+Abre `cfdisk` con el nombre que corresponda a tu disco:
+
+```bash
+cfdisk /dev/sda        # SATA
+cfdisk /dev/nvme0n1    # NVMe
+```
 
 ---
 
@@ -49,29 +52,61 @@ Una vez dentro, sigue estos pasos para **crear cada partición**:
 
 ### Esquema MBR (BIOS legacy)
 
-| Dispositivo   | Punto de montaje | Tipo           | Tamaño recomendado | Formato                       |
-|---------------|-----------------|----------------|--------------------|-------------------------------|
-| `/dev/sda1`   | `/`             | Linux fs       | 20–50 GiB          | `mkfs.ext4 /dev/sda1`         |
-| `/dev/sda2`   | swap            | Linux swap     | 2–4 GiB            | `mkswap /dev/sda2`            |
-| `/dev/sda3`   | `/home`         | Linux fs       | Resto del disco    | `mkfs.ext4 /dev/sda3`         |
+=== "SATA (/dev/sda)"
+
+    | Dispositivo   | Punto de montaje | Tipo           | Tamaño recomendado | Formato                       |
+    |---------------|-----------------|----------------|--------------------|-------------------------------|
+    | `/dev/sda1`   | `/`             | Linux fs       | 20–50 GiB          | `mkfs.ext4 /dev/sda1`         |
+    | `/dev/sda2`   | swap            | Linux swap     | 2–4 GiB            | `mkswap /dev/sda2`            |
+    | `/dev/sda3`   | `/home`         | Linux fs       | Resto del disco    | `mkfs.ext4 /dev/sda3`         |
+
+=== "NVMe (/dev/nvme0n1)"
+
+    | Dispositivo       | Punto de montaje | Tipo           | Tamaño recomendado | Formato                           |
+    |-------------------|-----------------|----------------|--------------------|-----------------------------------|
+    | `/dev/nvme0n1p1`  | `/`             | Linux fs       | 20–50 GiB          | `mkfs.ext4 /dev/nvme0n1p1`        |
+    | `/dev/nvme0n1p2`  | swap            | Linux swap     | 2–4 GiB            | `mkswap /dev/nvme0n1p2`           |
+    | `/dev/nvme0n1p3`  | `/home`         | Linux fs       | Resto del disco    | `mkfs.ext4 /dev/nvme0n1p3`        |
 
 ### Esquema GPT con BIOS
 
-| Dispositivo   | Punto de montaje | Tipo           | Tamaño recomendado | Formato                       |
-|---------------|-----------------|----------------|--------------------|-------------------------------|
-| `/dev/sda1`   | BIOS boot       | BIOS boot      | 1 MiB              | *(sin formato)*               |
-| `/dev/sda2`   | `/`             | Linux fs       | 20–50 GiB          | `mkfs.ext4 /dev/sda2`         |
-| `/dev/sda3`   | swap            | Linux swap     | 2–4 GiB            | `mkswap /dev/sda3`            |
-| `/dev/sda4`   | `/home`         | Linux fs       | Resto del disco    | `mkfs.ext4 /dev/sda4`         |
+=== "SATA (/dev/sda)"
+
+    | Dispositivo   | Punto de montaje | Tipo           | Tamaño recomendado | Formato                       |
+    |---------------|-----------------|----------------|--------------------|-------------------------------|
+    | `/dev/sda1`   | BIOS boot       | BIOS boot      | 1 MiB              | *(sin formato)*               |
+    | `/dev/sda2`   | `/`             | Linux fs       | 20–50 GiB          | `mkfs.ext4 /dev/sda2`         |
+    | `/dev/sda3`   | swap            | Linux swap     | 2–4 GiB            | `mkswap /dev/sda3`            |
+    | `/dev/sda4`   | `/home`         | Linux fs       | Resto del disco    | `mkfs.ext4 /dev/sda4`         |
+
+=== "NVMe (/dev/nvme0n1)"
+
+    | Dispositivo       | Punto de montaje | Tipo           | Tamaño recomendado | Formato                           |
+    |-------------------|-----------------|----------------|--------------------|-----------------------------------|
+    | `/dev/nvme0n1p1`  | BIOS boot       | BIOS boot      | 1 MiB              | *(sin formato)*                   |
+    | `/dev/nvme0n1p2`  | `/`             | Linux fs       | 20–50 GiB          | `mkfs.ext4 /dev/nvme0n1p2`        |
+    | `/dev/nvme0n1p3`  | swap            | Linux swap     | 2–4 GiB            | `mkswap /dev/nvme0n1p3`           |
+    | `/dev/nvme0n1p4`  | `/home`         | Linux fs       | Resto del disco    | `mkfs.ext4 /dev/nvme0n1p4`        |
 
 ### Esquema GPT con EFI (UEFI)
 
-| Dispositivo   | Punto de montaje | Tipo           | Tamaño recomendado | Formato                       |
-|---------------|-----------------|----------------|--------------------|-------------------------------|
-| `/dev/sda1`   | `/boot` (EFI)   | EFI System     | 512 MiB            | `mkfs.fat -F32 /dev/sda1`     |
-| `/dev/sda2`   | `/`             | Linux fs       | 20–50 GiB          | `mkfs.ext4 /dev/sda2`         |
-| `/dev/sda3`   | swap            | Linux swap     | 2–4 GiB            | `mkswap /dev/sda3`            |
-| `/dev/sda4`   | `/home`         | Linux fs       | Resto del disco    | `mkfs.ext4 /dev/sda4`         |
+=== "SATA (/dev/sda)"
+
+    | Dispositivo   | Punto de montaje | Tipo           | Tamaño recomendado | Formato                       |
+    |---------------|-----------------|----------------|--------------------|-------------------------------|
+    | `/dev/sda1`   | `/boot` (EFI)   | EFI System     | 512 MiB            | `mkfs.fat -F32 /dev/sda1`     |
+    | `/dev/sda2`   | `/`             | Linux fs       | 20–50 GiB          | `mkfs.ext4 /dev/sda2`         |
+    | `/dev/sda3`   | swap            | Linux swap     | 2–4 GiB            | `mkswap /dev/sda3`            |
+    | `/dev/sda4`   | `/home`         | Linux fs       | Resto del disco    | `mkfs.ext4 /dev/sda4`         |
+
+=== "NVMe (/dev/nvme0n1)"
+
+    | Dispositivo       | Punto de montaje | Tipo           | Tamaño recomendado | Formato                           |
+    |-------------------|-----------------|----------------|--------------------|-----------------------------------|
+    | `/dev/nvme0n1p1`  | `/boot` (EFI)   | EFI System     | 512 MiB            | `mkfs.fat -F32 /dev/nvme0n1p1`    |
+    | `/dev/nvme0n1p2`  | `/`             | Linux fs       | 20–50 GiB          | `mkfs.ext4 /dev/nvme0n1p2`        |
+    | `/dev/nvme0n1p3`  | swap            | Linux swap     | 2–4 GiB            | `mkswap /dev/nvme0n1p3`           |
+    | `/dev/nvme0n1p4`  | `/home`         | Linux fs       | Resto del disco    | `mkfs.ext4 /dev/nvme0n1p4`        |
 
 !!! warning "La partición EFI o BIOS boot debe ser la primera"
     Algunos firmwares fallan si la partición de arranque no está al principio del disco.
@@ -82,21 +117,43 @@ Una vez dentro, sigue estos pasos para **crear cada partición**:
 
 Una vez escritas las particiones con `cfdisk`, las formateamos. Ejemplo con esquema GPT+EFI:
 
-```bash
-mkfs.fat -F32 /dev/sda1   # EFI
-mkfs.ext4 /dev/sda2        # raíz
-mkswap /dev/sda3           # swap
-mkfs.ext4 /dev/sda4        # home
-```
+=== "SATA (/dev/sda)"
+
+    ```bash
+    mkfs.fat -F32 /dev/sda1   # EFI
+    mkfs.ext4 /dev/sda2        # raíz
+    mkswap /dev/sda3           # swap
+    mkfs.ext4 /dev/sda4        # home
+    ```
+
+=== "NVMe (/dev/nvme0n1)"
+
+    ```bash
+    mkfs.fat -F32 /dev/nvme0n1p1   # EFI
+    mkfs.ext4 /dev/nvme0n1p2        # raíz
+    mkswap /dev/nvme0n1p3           # swap
+    mkfs.ext4 /dev/nvme0n1p4        # home
+    ```
 
 Las montamos en `/mnt`:
 
-```bash
-mount /dev/sda2 /mnt
-mount --mkdir /dev/sda1 /mnt/boot
-mount --mkdir /dev/sda4 /mnt/home
-swapon /dev/sda3
-```
+=== "SATA (/dev/sda)"
+
+    ```bash
+    mount /dev/sda2 /mnt
+    mount --mkdir /dev/sda1 /mnt/boot
+    mount --mkdir /dev/sda4 /mnt/home
+    swapon /dev/sda3
+    ```
+
+=== "NVMe (/dev/nvme0n1)"
+
+    ```bash
+    mount /dev/nvme0n1p2 /mnt
+    mount --mkdir /dev/nvme0n1p1 /mnt/boot
+    mount --mkdir /dev/nvme0n1p4 /mnt/home
+    swapon /dev/nvme0n1p3
+    ```
 
 !!! info "Resultado esperado"
     `lsblk` debería mostrar las particiones montadas en sus puntos correspondientes. Si ves un error de `mount`, verifica que el formato de la partición coincide con el sistema de ficheros esperado.

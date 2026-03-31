@@ -3,21 +3,23 @@
 En este paso dividiremos el disco en particiones. Usaremos \tmarron{cfdisk},
 una herramienta interactiva más intuitiva que \texttt{fdisk} para quienes se acercan por primera vez.
 
-\begin{tcolorbox}[title=Disco duro mecánico o unidad SSD (SATA)]
-\begin{lstlisting}[style=bashstyle]
-cfdisk /dev/sda
-\end{lstlisting}
-\end{tcolorbox}
-
-\begin{tcolorbox}[title=Unidad M.2 (NVMe)]
-\begin{lstlisting}[style=bashstyle]
-cfdisk /dev/nvme0n1
-\end{lstlisting}
-\end{tcolorbox}
-
 \begin{tcolorbox}[colback=blue!5, colframe=blue!50!black, title={\faInfoCircle\hspace*{0.5em} Identificar el disco antes de empezar}]
 \begin{lstlisting}[style=bashstyle]
 lsblk
+\end{lstlisting}
+El nombre del dispositivo depende del tipo de unidad:
+\begin{itemize}
+  \item \textbf{SATA} (disco mecánico o SSD): \texttt{/dev/sda} — particiones: \texttt{/dev/sda1}, \texttt{/dev/sda2}\ldots
+  \item \textbf{NVMe} (unidad M.2): \texttt{/dev/nvme0n1} — particiones añaden \texttt{p}: \texttt{/dev/nvme0n1p1}, \texttt{/dev/nvme0n1p2}\ldots
+\end{itemize}
+\end{tcolorbox}
+
+Abre \tmarron{cfdisk} con el nombre que corresponda a tu disco:
+
+\begin{tcolorbox}[title=Abrir cfdisk]
+\begin{lstlisting}[style=bashstyle]
+cfdisk /dev/sda        # SATA
+cfdisk /dev/nvme0n1    # NVMe
 \end{lstlisting}
 \end{tcolorbox}
 
@@ -52,7 +54,7 @@ al confirmar con \textbf{Write}.
 
 \subsection{Esquemas de particionado}
 
-\begin{tcolorbox}[title=Ejemplo MBR (BIOS legacy)]
+\begin{tcolorbox}[title=Esquema MBR (BIOS legacy) — SATA]
 \begin{ttfamily}
   \begin{tabular}{lllll}
     {\color{blue}/dev/sda1} & {\color{red}/}     & {\color{brown}Linux fs}   & 20--50 GiB       & {\color{orange}mkfs.ext4 /dev/sda1} \\
@@ -62,7 +64,17 @@ al confirmar con \textbf{Write}.
 \end{ttfamily}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title=Ejemplo GPT con BIOS]
+\begin{tcolorbox}[title=Esquema MBR (BIOS legacy) — NVMe]
+\begin{ttfamily}
+  \begin{tabular}{lllll}
+    {\color{blue}/dev/nvme0n1p1} & {\color{red}/}     & {\color{brown}Linux fs}   & 20--50 GiB       & {\color{orange}mkfs.ext4 /dev/nvme0n1p1} \\
+    {\color{blue}/dev/nvme0n1p2} & {\color{red}swap}  & {\color{brown}Linux swap} & 2--4 GiB         & {\color{orange}mkswap /dev/nvme0n1p2} \\
+    {\color{blue}/dev/nvme0n1p3} & {\color{red}/home} & {\color{brown}Linux fs}   & Resto del disco  & {\color{orange}mkfs.ext4 /dev/nvme0n1p3} \\
+  \end{tabular}
+\end{ttfamily}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Esquema GPT con BIOS — SATA]
 \begin{ttfamily}
   \begin{tabular}{lllll}
     {\color{blue}/dev/sda1} & {\color{red}BIOS boot} & {\color{brown}BIOS boot}  & 1 MiB            & {\color{orange}(sin formato)} \\
@@ -73,13 +85,35 @@ al confirmar con \textbf{Write}.
 \end{ttfamily}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title=Ejemplo GPT con EFI (UEFI)]
+\begin{tcolorbox}[title=Esquema GPT con BIOS — NVMe]
+\begin{ttfamily}
+  \begin{tabular}{lllll}
+    {\color{blue}/dev/nvme0n1p1} & {\color{red}BIOS boot} & {\color{brown}BIOS boot}  & 1 MiB            & {\color{orange}(sin formato)} \\
+    {\color{blue}/dev/nvme0n1p2} & {\color{red}/}         & {\color{brown}Linux fs}   & 20--50 GiB       & {\color{orange}mkfs.ext4 /dev/nvme0n1p2} \\
+    {\color{blue}/dev/nvme0n1p3} & {\color{red}swap}      & {\color{brown}Linux swap} & 2--4 GiB         & {\color{orange}mkswap /dev/nvme0n1p3} \\
+    {\color{blue}/dev/nvme0n1p4} & {\color{red}/home}     & {\color{brown}Linux fs}   & Resto del disco  & {\color{orange}mkfs.ext4 /dev/nvme0n1p4} \\
+  \end{tabular}
+\end{ttfamily}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Esquema GPT con EFI (UEFI) — SATA]
 \begin{ttfamily}
   \begin{tabular}{lllll}
     {\color{blue}/dev/sda1} & {\color{red}/boot (EFI)} & {\color{brown}EFI System} & 512 MiB          & {\color{orange}mkfs.fat -F32 /dev/sda1} \\
     {\color{blue}/dev/sda2} & {\color{red}/}           & {\color{brown}Linux fs}   & 20--50 GiB       & {\color{orange}mkfs.ext4 /dev/sda2} \\
     {\color{blue}/dev/sda3} & {\color{red}swap}        & {\color{brown}Linux swap} & 2--4 GiB         & {\color{orange}mkswap /dev/sda3} \\
     {\color{blue}/dev/sda4} & {\color{red}/home}       & {\color{brown}Linux fs}   & Resto del disco  & {\color{orange}mkfs.ext4 /dev/sda4} \\
+  \end{tabular}
+\end{ttfamily}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Esquema GPT con EFI (UEFI) — NVMe]
+\begin{ttfamily}
+  \begin{tabular}{lllll}
+    {\color{blue}/dev/nvme0n1p1} & {\color{red}/boot (EFI)} & {\color{brown}EFI System} & 512 MiB          & {\color{orange}mkfs.fat -F32 /dev/nvme0n1p1} \\
+    {\color{blue}/dev/nvme0n1p2} & {\color{red}/}           & {\color{brown}Linux fs}   & 20--50 GiB       & {\color{orange}mkfs.ext4 /dev/nvme0n1p2} \\
+    {\color{blue}/dev/nvme0n1p3} & {\color{red}swap}        & {\color{brown}Linux swap} & 2--4 GiB         & {\color{orange}mkswap /dev/nvme0n1p3} \\
+    {\color{blue}/dev/nvme0n1p4} & {\color{red}/home}       & {\color{brown}Linux fs}   & Resto del disco  & {\color{orange}mkfs.ext4 /dev/nvme0n1p4} \\
   \end{tabular}
 \end{ttfamily}
 \end{tcolorbox}
@@ -91,7 +125,7 @@ Algunos firmwares fallan si no es así.
 
 \subsection{Formatear y montar las particiones}
 
-\begin{tcolorbox}[title=Formateamos las particiones (ejemplo GPT+EFI)]
+\begin{tcolorbox}[title=Formateamos las particiones (GPT+EFI — SATA)]
 \begin{lstlisting}[style=bashstyle]
 mkfs.fat -F32 /dev/sda1   # EFI
 mkfs.ext4 /dev/sda2        # raiz
@@ -100,12 +134,30 @@ mkfs.ext4 /dev/sda4        # home
 \end{lstlisting}
 \end{tcolorbox}
 
-\begin{tcolorbox}[title=Montamos en \texttt{/mnt}]
+\begin{tcolorbox}[title=Formateamos las particiones (GPT+EFI — NVMe)]
+\begin{lstlisting}[style=bashstyle]
+mkfs.fat -F32 /dev/nvme0n1p1   # EFI
+mkfs.ext4 /dev/nvme0n1p2        # raiz
+mkswap /dev/nvme0n1p3           # swap
+mkfs.ext4 /dev/nvme0n1p4        # home
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Montamos en \texttt{/mnt} — SATA]
 \begin{lstlisting}[style=bashstyle]
 mount /dev/sda2 /mnt
 mount --mkdir /dev/sda1 /mnt/boot
 mount --mkdir /dev/sda4 /mnt/home
 swapon /dev/sda3
+\end{lstlisting}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Montamos en \texttt{/mnt} — NVMe]
+\begin{lstlisting}[style=bashstyle]
+mount /dev/nvme0n1p2 /mnt
+mount --mkdir /dev/nvme0n1p1 /mnt/boot
+mount --mkdir /dev/nvme0n1p4 /mnt/home
+swapon /dev/nvme0n1p3
 \end{lstlisting}
 \tcblower
 \scriptsize Verifica con \texttt{lsblk} que las particiones aparecen montadas en sus puntos correspondientes.
