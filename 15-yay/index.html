@@ -1195,14 +1195,21 @@
 
 <h1 id="15-instalacion-de-yay">15. Instalación de <code>yay</code></h1>
 <p><code>yay</code> es un gestor de paquetes para el AUR que actúa como envoltorio de <code>pacman</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">yay no puede ejecutarse como root</p>
+<p><code>yay</code> prohíbe expresamente su uso por el superusuario. Antes de continuar, cambia
+al usuario creado en el paso anterior:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>su<span class="w"> </span>-<span class="w"> </span>viriato
+</code></pre></div></td></tr></table></div>
+</div>
 <h2 id="proceso-de-instalacion">Proceso de instalación</h2>
 <p><strong>1. Clonamos el repositorio desde el AUR:</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://aur.archlinux.org/yay.git
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://aur.archlinux.org/yay.git
 </code></pre></div></td></tr></table></div>
 <p><strong>2. Entramos al directorio y compilamos:</strong></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>yay
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>makepkg<span class="w"> </span>-si
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>yay
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>makepkg<span class="w"> </span>-si
 </code></pre></div></td></tr></table></div>
 <div class="admonition note">
 <p class="admonition-title">Requisitos</p>
@@ -1210,11 +1217,11 @@
 </div>
 <h2 id="uso-basico">Uso básico</h2>
 <p>Una vez instalado, <code>yay</code> funciona igual que <code>pacman</code> pero sin necesitar <code>sudo</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span>
-<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>nombre-del-paquete<span class="w">   </span><span class="c1"># instalar</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>yay<span class="w"> </span>-Syu<span class="w">                    </span><span class="c1"># actualizar el sistema (incluye AUR)</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>yay<span class="w"> </span>-Ss<span class="w"> </span>término<span class="w">             </span><span class="c1"># buscar paquetes</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>yay<span class="w"> </span>-S<span class="w"> </span>nombre-del-paquete<span class="w">   </span><span class="c1"># instalar</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>yay<span class="w"> </span>-Syu<span class="w">                    </span><span class="c1"># actualizar el sistema (incluye AUR)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>yay<span class="w"> </span>-Ss<span class="w"> </span>término<span class="w">             </span><span class="c1"># buscar paquetes</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
