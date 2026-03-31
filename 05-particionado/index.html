@@ -1318,22 +1318,19 @@
 <h1 id="5-particionado-del-disco">5. Particionado del disco</h1>
 <p>En este paso vamos a dividir el disco en particiones. Usaremos <code>cfdisk</code>, una herramienta de texto interactiva que resulta más intuitiva que <code>fdisk</code> para quien se acerca por primera vez.</p>
 <h2 id="abrir-cfdisk">Abrir cfdisk</h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Disco mecánico o SSD (SATA)</label><label for="__tabbed_1_2">Unidad M.2 (NVMe)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>cfdisk<span class="w"> </span>/dev/sda
+<p>Antes de empezar, identifica el nombre del disco con:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>lsblk
 </code></pre></div></td></tr></table></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>cfdisk<span class="w"> </span>/dev/nvme0n1
+<p>El nombre del dispositivo depende del tipo de unidad:</p>
+<ul>
+<li><strong>SATA</strong> (disco mecánico o SSD): <code>/dev/sda</code> — las particiones se numeran <code>/dev/sda1</code>, <code>/dev/sda2</code>…</li>
+<li><strong>NVMe</strong> (unidad M.2): <code>/dev/nvme0n1</code> — las particiones añaden <code>p</code> antes del número: <code>/dev/nvme0n1p1</code>, <code>/dev/nvme0n1p2</code>…</li>
+</ul>
+<p>Abre <code>cfdisk</code> con el nombre que corresponda a tu disco:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>cfdisk<span class="w"> </span>/dev/sda<span class="w">        </span><span class="c1"># SATA</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>cfdisk<span class="w"> </span>/dev/nvme0n1<span class="w">    </span><span class="c1"># NVMe</span>
 </code></pre></div></td></tr></table></div>
-</div>
-</div>
-</div>
-<div class="admonition info">
-<p class="admonition-title">¿Cómo identificar el disco?</p>
-<p>Usa <code>lsblk</code> para ver todos los dispositivos conectados y sus nombres antes de abrir <code>cfdisk</code>.</p>
-</div>
 <hr />
 <h2 id="flujo-de-trabajo-en-cfdisk">Flujo de trabajo en cfdisk</h2>
 <p>Al abrir <code>cfdisk</code> por primera vez en un disco vacío, se te pedirá elegir el <strong>tipo de tabla de particiones</strong>:</p>
@@ -1362,6 +1359,9 @@
 <hr />
 <h2 id="esquemas-de-particionado">Esquemas de particionado</h2>
 <h3 id="esquema-mbr-bios-legacy">Esquema MBR (BIOS legacy)</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">SATA (/dev/sda)</label><label for="__tabbed_1_2">NVMe (/dev/nvme0n1)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -1396,7 +1396,49 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Dispositivo</th>
+<th>Punto de montaje</th>
+<th>Tipo</th>
+<th>Tamaño recomendado</th>
+<th>Formato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/dev/nvme0n1p1</code></td>
+<td><code>/</code></td>
+<td>Linux fs</td>
+<td>20–50 GiB</td>
+<td><code>mkfs.ext4 /dev/nvme0n1p1</code></td>
+</tr>
+<tr>
+<td><code>/dev/nvme0n1p2</code></td>
+<td>swap</td>
+<td>Linux swap</td>
+<td>2–4 GiB</td>
+<td><code>mkswap /dev/nvme0n1p2</code></td>
+</tr>
+<tr>
+<td><code>/dev/nvme0n1p3</code></td>
+<td><code>/home</code></td>
+<td>Linux fs</td>
+<td>Resto del disco</td>
+<td><code>mkfs.ext4 /dev/nvme0n1p3</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <h3 id="esquema-gpt-con-bios">Esquema GPT con BIOS</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">SATA (/dev/sda)</label><label for="__tabbed_2_2">NVMe (/dev/nvme0n1)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -1438,7 +1480,56 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Dispositivo</th>
+<th>Punto de montaje</th>
+<th>Tipo</th>
+<th>Tamaño recomendado</th>
+<th>Formato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/dev/nvme0n1p1</code></td>
+<td>BIOS boot</td>
+<td>BIOS boot</td>
+<td>1 MiB</td>
+<td><em>(sin formato)</em></td>
+</tr>
+<tr>
+<td><code>/dev/nvme0n1p2</code></td>
+<td><code>/</code></td>
+<td>Linux fs</td>
+<td>20–50 GiB</td>
+<td><code>mkfs.ext4 /dev/nvme0n1p2</code></td>
+</tr>
+<tr>
+<td><code>/dev/nvme0n1p3</code></td>
+<td>swap</td>
+<td>Linux swap</td>
+<td>2–4 GiB</td>
+<td><code>mkswap /dev/nvme0n1p3</code></td>
+</tr>
+<tr>
+<td><code>/dev/nvme0n1p4</code></td>
+<td><code>/home</code></td>
+<td>Linux fs</td>
+<td>Resto del disco</td>
+<td><code>mkfs.ext4 /dev/nvme0n1p4</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <h3 id="esquema-gpt-con-efi-uefi">Esquema GPT con EFI (UEFI)</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">SATA (/dev/sda)</label><label for="__tabbed_3_2">NVMe (/dev/nvme0n1)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -1480,6 +1571,52 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Dispositivo</th>
+<th>Punto de montaje</th>
+<th>Tipo</th>
+<th>Tamaño recomendado</th>
+<th>Formato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/dev/nvme0n1p1</code></td>
+<td><code>/boot</code> (EFI)</td>
+<td>EFI System</td>
+<td>512 MiB</td>
+<td><code>mkfs.fat -F32 /dev/nvme0n1p1</code></td>
+</tr>
+<tr>
+<td><code>/dev/nvme0n1p2</code></td>
+<td><code>/</code></td>
+<td>Linux fs</td>
+<td>20–50 GiB</td>
+<td><code>mkfs.ext4 /dev/nvme0n1p2</code></td>
+</tr>
+<tr>
+<td><code>/dev/nvme0n1p3</code></td>
+<td>swap</td>
+<td>Linux swap</td>
+<td>2–4 GiB</td>
+<td><code>mkswap /dev/nvme0n1p3</code></td>
+</tr>
+<tr>
+<td><code>/dev/nvme0n1p4</code></td>
+<td><code>/home</code></td>
+<td>Linux fs</td>
+<td>Resto del disco</td>
+<td><code>mkfs.ext4 /dev/nvme0n1p4</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">La partición EFI o BIOS boot debe ser la primera</p>
 <p>Algunos firmwares fallan si la partición de arranque no está al principio del disco.</p>
@@ -1487,6 +1624,9 @@
 <hr />
 <h2 id="formatear-y-montar-las-particiones">Formatear y montar las particiones</h2>
 <p>Una vez escritas las particiones con <code>cfdisk</code>, las formateamos. Ejemplo con esquema GPT+EFI:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">SATA (/dev/sda)</label><label for="__tabbed_4_2">NVMe (/dev/nvme0n1)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
@@ -1495,15 +1635,44 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a>mkswap<span class="w"> </span>/dev/sda3<span class="w">           </span><span class="c1"># swap</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a>mkfs.ext4<span class="w"> </span>/dev/sda4<span class="w">        </span><span class="c1"># home</span>
 </code></pre></div></td></tr></table></div>
-<p>Las montamos en <code>/mnt</code>:</p>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>mount<span class="w"> </span>/dev/sda2<span class="w"> </span>/mnt
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/sda1<span class="w"> </span>/mnt/boot
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/sda4<span class="w"> </span>/mnt/home
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>swapon<span class="w"> </span>/dev/sda3
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>mkfs.fat<span class="w"> </span>-F32<span class="w"> </span>/dev/nvme0n1p1<span class="w">   </span><span class="c1"># EFI</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>mkfs.ext4<span class="w"> </span>/dev/nvme0n1p2<span class="w">        </span><span class="c1"># raíz</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>mkswap<span class="w"> </span>/dev/nvme0n1p3<span class="w">           </span><span class="c1"># swap</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>mkfs.ext4<span class="w"> </span>/dev/nvme0n1p4<span class="w">        </span><span class="c1"># home</span>
 </code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>Las montamos en <code>/mnt</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">SATA (/dev/sda)</label><label for="__tabbed_5_2">NVMe (/dev/nvme0n1)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>mount<span class="w"> </span>/dev/sda2<span class="w"> </span>/mnt
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/sda1<span class="w"> </span>/mnt/boot
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/sda4<span class="w"> </span>/mnt/home
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>swapon<span class="w"> </span>/dev/sda3
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>mount<span class="w"> </span>/dev/nvme0n1p2<span class="w"> </span>/mnt
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/nvme0n1p1<span class="w"> </span>/mnt/boot
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>mount<span class="w"> </span>--mkdir<span class="w"> </span>/dev/nvme0n1p4<span class="w"> </span>/mnt/home
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>swapon<span class="w"> </span>/dev/nvme0n1p3
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Resultado esperado</p>
 <p><code>lsblk</code> debería mostrar las particiones montadas en sus puntos correspondientes. Si ves un error de <code>mount</code>, verifica que el formato de la partición coincide con el sistema de ficheros esperado.</p>
